@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Andor's Trail Interactive map [0.7.0] | mountaincave</title>
+    <link rel="shortcut icon" href="http://andorstrail.irkalla.cz/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="http://andorstrail.irkalla.cz/css/map.css">
+    <script src="http://andorstrail.irkalla.cz/js/map.js" type="text/javascript"></script>
+    <script>
+        (function(G,o,O,g,l){G.GoogleAnalyticsObject=O;G[O]||(G[O]=function(){(G[O].q=G[O].q||[]).push(arguments)});G[O].l=+new Date;g=o.createElement('script'),l=o.scripts[0];g.src='//www.google-analytics.com/analytics.js';l.parentNode.insertBefore(g,l)}(this,document,'ga'));ga('create','UA-56930109-1');ga('send','pageview')
+    </script>
+</head>
+<body onload="bindZoom()">
+    <ul id="top" style="min-width: 448px" class="menu">
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/">HOME</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/itemlist.php">EQUIPMENT</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/consumablelist.php">CONSUMABLE</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php">MONSTER</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/npclist.php">NPC &amp; MERCHANT</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/conditionlist.php">CONDITION</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/questlist.php">QUEST</a>
+        </li>
+        <li>
+                    <a class="current" href="http://andorstrail.irkalla.cz/0.7.0/map/">MAP</a>
+                    <ul class="menu">
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/blackwater.html">Blackwater
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwcave1.html">Blackwater cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwcave2.html">Blackwater cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwentry.html">Blackwater entry
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwsettlement.html">Blackwater settlement
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/flagstone.html">Flagstone
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/gargoylecave.html">Gargoyle cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/lodar5cave.html">Green maze cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/lodarcave.html">Lodar cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave.html" class="current">Mountain cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/pwcave.html">Pw cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/snakecave.html">Snake cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhavencave.html">Cave on way to Brimhaven
+</a></li>
+                    </ul>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/disqus.php">DISQUS</a>
+        </li>
+    </ul>
+    <div id="areamap" style="width: 448px; height: 576px">
+        <a id="mountaincave3" class="area" style="left: 0px; top: 0px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave3.html">
+            <img alt="mountaincave3" src="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave3_area.jpg" width="160" height="160">
+        </a>
+        <a id="mountaincave2" class="area" style="left: 24px; top: 168px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave2.html">
+            <img alt="mountaincave2" src="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave2_area.jpg" width="200" height="240">
+        </a>
+        <a id="mountaincave1" class="area" style="left: 120px; top: 416px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave1.html">
+            <img alt="mountaincave1" src="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave1_area.jpg" width="160" height="160">
+        </a>
+        <a id="mountaincave0" class="area" style="left: 288px; top: 416px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave0.html">
+            <img alt="mountaincave0" src="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave0_area.jpg" width="160" height="160">
+        </a>
+    </div>
+
+    <table class="menu" id="bottom" style="min-width: 448px">
+        <tr>
+            <td>
+                &#9632; <a href="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave.html">Mountain cave
+</a>
+            </td>
+            <td id="worldmaplink">
+                &#9650; <a href="http://andorstrail.irkalla.cz/0.7.0/map/world1.html">Go to Worldmap</a>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

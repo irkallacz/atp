@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Andor's Trail Interactive map [0.7.0] | flagstone2</title>
+    <link rel="shortcut icon" href="http://andorstrail.irkalla.cz/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="http://andorstrail.irkalla.cz/css/map.css">
+    <script src="http://andorstrail.irkalla.cz/js/map.js" type="text/javascript"></script>
+    <script>
+        (function(G,o,O,g,l){G.GoogleAnalyticsObject=O;G[O]||(G[O]=function(){(G[O].q=G[O].q||[]).push(arguments)});G[O].l=+new Date;g=o.createElement('script'),l=o.scripts[0];g.src='//www.google-analytics.com/analytics.js';l.parentNode.insertBefore(g,l)}(this,document,'ga'));ga('create','UA-56930109-1');ga('send','pageview')
+    </script>
+</head>
+<body onload="openHash()">
+    <ul class="menu" id="top" style="min-width: 352px">
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/">HOME</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/itemlist.php">EQUIPMENT</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/consumablelist.php">CONSUMABLE</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php">MONSTER</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/npclist.php">NPC &amp; MERCHANT</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/conditionlist.php">CONDITION</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/questlist.php">QUEST</a>
+        </li>
+        <li>
+                    <a class="current" href="http://andorstrail.irkalla.cz/0.7.0/map/">MAP</a>
+                    <ul class="menu">
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/blackwater.html">Blackwater
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwcave1.html">Blackwater cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwcave2.html">Blackwater cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwentry.html">Blackwater entry
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwsettlement.html">Blackwater settlement
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/flagstone.html" class="current">Flagstone
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/gargoylecave.html">Gargoyle cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/lodar5cave.html">Green maze cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/lodarcave.html">Lodar cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave.html">Mountain cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/pwcave.html">Pw cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/snakecave.html">Snake cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhavencave.html">Cave on way to Brimhaven
+</a></li>
+                    </ul>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/disqus.php">DISQUS</a>
+        </li>
+    </ul>
+    <div id="map" style="width: 352px">
+        <img id="image" alt="flagstone2.tmx" src="http://andorstrail.irkalla.cz/0.7.0/map/flagstone2.jpg" width="352" height="960">
+
+        <div style="left: 224px; top: 320px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_rltiles1.png" alt="monsters_rltiles1.png" style="margin: -0px 0px 0px -512px">
+        </div>
+        <div style="left: 224px; top: 416px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_skeleton1.png" alt="monsters_skeleton1.png" style="margin: -0px 0px 0px -0px">
+        </div>
+        <div style="left: 288px; top: 576px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_misc.png" alt="monsters_misc.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 224px; top: 672px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_skeleton2.png" alt="monsters_skeleton2.png" style="margin: -0px 0px 0px -0px">
+        </div>
+        <div style="left: 32px; top: 736px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_misc.png" alt="monsters_misc.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 128px; top: 576px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_zombie1.png" alt="monsters_zombie1.png" style="margin: -0px 0px 0px -0px">
+        </div>
+        <div style="left: 128px; top: 832px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_skeleton1.png" alt="monsters_skeleton1.png" style="margin: -0px 0px 0px -0px">
+        </div>
+        <div style="left: 128px; top: 96px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_misc.png" alt="monsters_misc.png" style="margin: -0px 0px 0px -352px">
+        </div>
+        <div style="left: 192px; top: 96px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_rats.png" alt="monsters_rats.png" style="margin: -0px 0px 0px -128px">
+        </div>
+
+        <img id="above" alt="flagstone2 above" src="http://andorstrail.irkalla.cz/0.7.0/map/flagstone2_above.png" width="352" height="960">
+
+        <a id="cave_guardian" title="Cave guardian" style="left: 224px; top: 320px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#cave_guardian" class="npc cave_guardian size1x1"></a>
+        <a id="bone_warrior2" title="Bone warrior" style="left: 224px; top: 416px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#bone_warrior" class="npc bone_warrior size1x1"></a>
+        <a id="fledgling_gargoyle3" title="Fledgling Gargoyle" style="left: 288px; top: 576px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#fledgling_gargoyle" class="npc fledgling_gargoyle size1x1"></a>
+        <a id="skeletal_master4" title="Skeletal master" style="left: 224px; top: 672px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#skeletal_master" class="npc skeletal_master size1x1"></a>
+        <a id="fledgling_gargoyle5" title="Fledgling Gargoyle" style="left: 32px; top: 736px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#fledgling_gargoyle" class="npc fledgling_gargoyle size1x1"></a>
+        <a id="walking_corpse6" title="Walking corpse" style="left: 128px; top: 576px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#walking_corpse" class="npc walking_corpse size1x1"></a>
+        <a id="skeletal_warrior7" title="Skeletal warrior" style="left: 128px; top: 832px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#skeletal_warrior" class="npc skeletal_warrior size1x1"></a>
+        <a id="starving_prisoner" title="Starving prisoner" style="left: 128px; top: 96px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#starving_prisoner" class="npc starving_prisoner size1x1"></a>
+        <a id="basilisk9" title="Basilisk" style="left: 192px; top: 96px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#basilisk" class="npc basilisk size1x1"></a>
+
+        <!--Links-->
+            <a href="flagstone3.html#north" id="south" class="entrance" style="width:32px;height:32px;left:256px;top:928px"></a>
+            <a href="flagstone1.html#hole" id="north" class="entrance" style="width:32px;height:32px;left:32px;top:224px"></a>
+            <a class="sign" data-message="You notice that this tunnel seems to be dug out from below Flagstone. Probably the work of one of the former prisoners from Flagstone." href="javascript:sign('flagstone_brokensteps')" id="flagstone_brokensteps" style="width:32px;height:32px;left:224px;top:256px"></a>
+
+        <table class="menu" id="bottom">
+            <tr>
+                <td>
+                     &#9654;
+                         <a href="http://andorstrail.irkalla.cz/0.7.0/map/flagstone.html#flagstone2">Flagstone
+</a>
+                        &#9654; <a href="http://andorstrail.irkalla.cz/0.7.0/map/flagstone2.html">Flagstone prison
+</a>
+
+                </td>
+                <td id="worldmaplink"> &#9650;
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/map/world1.html">Go to Worldmap</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+console:
+	commands:
+		- App\Console\CreateMapFileCommand
+		- App\Console\CreateMapAllCommand
+		- App\Console\CreateMapAreaFileCommand
+		- App\Console\CreateMapImageCommand
+
+		- App\Console\ImportItemCommand
+		- App\Console\ImportMonsterCommand
+		- App\Console\ImportConditionCommand
+		- App\Console\ImportMapCommand
+		- App\Console\ImportDroplistCommand
+		- App\Console\ImportQuestCommand
+		- App\Console\ImportDialogCommand
+
+		- App\Console\AssignItemQuestCommand
+		- App\Console\AssignNpcQuestCommand
+
+		- App\Console\RenderPagesCommand
+
+	url: http://andorstrail.irkalla.cz/

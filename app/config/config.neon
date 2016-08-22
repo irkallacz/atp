@@ -1,0 +1,67 @@
+#
+# SECURITY WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+#
+# If you don't protect this directory from direct web access, anybody will be able to see your passwords.
+# http://nette.org/security-warning
+#
+parameters:
+	database:
+		driver: mysql
+		host: localhost
+		user: root
+		password:
+
+	menu:
+		home: default
+		equipment: itemlist
+		consumable: consumablelist
+		monster: monsterlist
+		NPC & merchant: npclist
+		condition: conditionlist
+		quest: questlist
+		map: map
+		disqus: 'Disqus:'
+
+	renderDir : %wwwDir%/../render
+	resDir : %wwwDir%/../res
+
+	version:
+		0.7.0: ZeroSevenZero
+
+php:
+	date.timezone: Europe/Prague
+
+
+nette:
+
+	database:
+		0.7.0:
+			dsn:        "%database.driver%:host=%database.host%;dbname=at-0-7-0"
+			user:       %database.user%
+			password:   %database.password%
+			reflection: discovered
+
+
+	application:
+		errorPresenter: Error
+		mapping:
+			*: App\*Module\Presenters\*Presenter
+
+	session:
+		expiration: 14 days
+		autoStart: true
+
+
+services:
+
+	- App\Model\ZeroSevenZeroModel
+
+	- App\Model\ZeroSevenZeroTableModel
+
+	- App\Model\Options(%menu%,%version%,%resDir%,%renderDir%,%wwwDir%)
+
+	- App\RouterFactory
+	router: @App\RouterFactory::createRouter
+
+extensions:
+	console: Kdyby\Console\DI\ConsoleExtension

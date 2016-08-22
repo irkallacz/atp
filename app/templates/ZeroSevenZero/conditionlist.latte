@@ -1,0 +1,91 @@
+{block #head}
+  <script type="text/javascript">
+    $(document).ready(function(){
+    {foreach $tables as $label =>$table}
+      oTable{!$label} = $('#{!$label}s').dataTable({ 
+        "bPaginate": false,
+        "bFilter": false,
+        "bInfo": false,
+        "aoColumnDefs": [
+       {block |strip}
+       {foreach $table['fields'] as $colum => $field} 
+        {if $field =='BC%' or $field =='AC%'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatP(data,type) } } ,{/if}
+        {if $field =='HP'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatHP(data,type) } } ,{/if}
+        {if $field =='AP' or $field =='Attack cost' or $field =='Move cost'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatAP(data,type) } } ,{/if}
+       {/foreach}
+       {/block}
+        ]
+      } );       
+    {/foreach} 
+    {foreach $tables as $label => $table}    
+    $('#{!$label}s td.drop').live('click', function () {        
+      tr = this.parentNode;
+      if (oTable{!$label}.fnIsOpen(tr)) closeTable(oTable{!$label},tr); else openTable(oTable{!$label},tr);
+    } );
+    {/foreach} 
+    
+    openHash();
+    } );
+  </script>
+{/block}
+{block #content}
+     <h1 n:block="title"><a n:href="default"><img alt="" src="{$baseUri}/image/icon.png"></a>Andor's Trail Condition List</h1>
+     <ul>
+      {foreach $tables as $label => $table}    
+      <li><a href="#{$label}s">{$label|firstUpper}</a></li>
+      {/foreach}    
+     </ul>
+    
+    {foreach $tables as $label =>$table}
+     <h2>{$label|firstUpper}</h2>
+     <table id="{$label}s" width="{$table['width']}">
+      <thead>
+      <tr>{block|strip}
+        <th n:foreach="$table['fields'] as $field">{$field}</th>
+      {/block}</tr>
+      </thead>
+      <tbody>
+      {var $items = clone $conditions}
+      {foreach $items->where('isPositive',$table['positive']) as $item}
+      {capture $var}
+      {foreach array('monster','item') as $value}
+        <tr n:foreach="$item->related($value.'_condition') as $cond">
+          {var $link = ($value == 'item') ? (($cond->ref('item')->ref('category')->actionType == 'use') ? 'consumable' : 'item') : 'monster'}
+          <td>
+              {if $value == 'item'}
+                <a n:href="{$link}list#{$cond->item}" n:class="at-icon, $cond->ref('item')->displaytype">
+              {elseif $value == 'monster'}
+                <a n:href="monsterlist#{$cond->monster}" n:class="at-icon, $cond->ref('monster')->size, $cond->ref('monster')->unique ? 'unique'">
+              {/if}
+              {$cond->ref($value)->iconID|ATIcon}</a></td>
+          <td class="left">{$cond->ref($value)->name}</td>
+          <td>{if $cond->event}On {$cond->event}{/if}</td>
+          <td>{if $cond->target}On {$cond->target}{/if}</td>
+          <td>{if $cond->chance}{$cond->chance}%{/if}</td>
+          <td>{if $cond->magnitude > 0}{$cond->magnitude}x{else}remove{/if}</td>
+          <td>{if $cond->duration}{$cond->duration} rounds{/if}</td>
+        </tr>
+      {/foreach}
+      {/capture}      
+      <tr id="{$item->id}" data-drop="{!$var|strip|pure}">{block|strip}
+        {foreach $table['fields'] as $colum => $field}                            
+          <td n:if="$colum == 'icon'" class="icon"><span class="hidden">{$item->id}</span><a href="#{$item->id}" class="at-icon">{$item->iconID|ATIcon}</a></td>
+          <td n:if="$colum == 'name'" n:class="left,name, $var ? drop">{$item->name}</td>
+          <td n:if="$colum == 'damage'">{$item->increaseAttackDamageMin}{if $item->increaseAttackDamageMin!=$item->increaseAttackDamageMax}-{$item->increaseAttackDamageMax}{/if}</td>
+          <td n:if="$colum == 'stackable'">{$item->isStacking ? 'Yes' : 'No'}</td>
+          <td n:if="$colum == 'cond'" class="cond">
+          {if $item->roundEffect}
+            {var $effect = json_decode($item->roundEffect,TRUE)}
+            {if array_key_exists('increaseCurrentHP',$effect)}{$effect['increaseCurrentHP']['min']|range: $effect['increaseCurrentHP']['max']}&nbsp;HP{/if}
+            {if array_key_exists('increaseCurrentAP',$effect)}{$effect['increaseCurrentAP']['min']|range: $effect['increaseCurrentAP']['max']}&nbsp;AP{/if}
+          {/if}
+          </td>
+          {continueIf in_array($colum,array('icon','name','cond','damage','stackable'))}
+          <td>{$item[$colum]}</td>
+        {/foreach}
+      {/block}</tr>
+      {/foreach}
+    </tbody>
+    </table>
+    {/foreach}
+{/block}

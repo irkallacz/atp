@@ -1,0 +1,52 @@
+{define #Conditions}
+ <a n:href="conditionlist#$cond->condition" title="On {$cond->event}{if $cond->target}
+  On {$cond->target}{/if}
+    {if ($cond->chance!=null)and($cond->chance!=100)}{$cond->chance.'% chance of '}{/if}{$cond->ref('condition')->name}{if $cond->magnitude > 1} {$cond->magnitude}x{/if}{if $cond->magnitude == -99} remove{/if}{$cond->duration ? ' ('.$cond->duration.' rounds)'}" class="at-icon">
+  {$cond->ref('condition')->iconID|ATIcon}
+  </a>
+{/define}
+{define #Effect}
+{var $hit = json_decode($effect,TRUE)}
+<span class="help" n:if="array_key_exists('increaseCurrentHP',$hit)" title="On {$label}
+  On source
+    {$hit['increaseCurrentHP']['min']|range: $hit['increaseCurrentHP']['max']} HP">+HP</span>
+<span class="help" n:if="array_key_exists('increaseCurrentAP',$hit)" title="On {$label}
+  On source
+    {$hit['increaseCurrentAP']['min']|range: $hit['increaseCurrentAP']['max']} AP">+AP</span>
+{/define}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>{include #title|striptags|trim}</title>
+  <link rel="shortcut icon" href="{$baseUri}/favicon.ico" type="image/x-icon">
+  <meta name="description" content="{block #title|striptags|trim}{/block}">
+  <link rel="image_src" href="{$baseUri}/image/icon.png"/>
+  <link rel="stylesheet" type="text/css" href="{$baseUri}/css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="{$baseUri}/css/main.css">
+  <script type="text/javascript" src="{$baseUri}/js/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" src="{$baseUri}/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="{$baseUri}/js/function.js"></script>
+  {block #head}
+  {/block}
+  <script n:syntax="off">
+  (function(G,o,O,g,l){G.GoogleAnalyticsObject=O;G[O]||(G[O]=function(){(G[O].q=G[O].q||[]).push(arguments)});G[O].l=+new Date;g=o.createElement('script'),l=o.scripts[0];g.src='//www.google-analytics.com/analytics.js';l.parentNode.insertBefore(g,l)}(this,document,'ga'));ga('create','UA-56930109-1');ga('send','pageview')
+  </script>
+  </head>
+  <body>
+  {block #menu}
+  <ul id="menu" n:inner-foreach="$menu as $title => $link">
+      <li>
+      {if !is_array($link)}
+          <a n:href="$link" {ifCurrent $link}class="current"{/ifCurrent}>{$title|upper}</a>
+      {else}
+          <a n:href="$link['link']">{$title|upper}</a>
+      {/if}
+      </li>
+  </ul>
+  {/block}
+  <small n:if="$version" id="version" class="float-right"><a n:href="version">game version {$version}</a></small>
+  {include #content}
+  </body>
+</html>

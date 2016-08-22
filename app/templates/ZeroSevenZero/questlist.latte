@@ -1,0 +1,136 @@
+{block #head}
+  <script type="text/javascript">
+    $(document).ready(function(){
+    {foreach $tables as $label}
+      oTable{!$label} = $('#{!$label}s').dataTable({ 
+        "bPaginate": false,
+        "bFilter": false,
+        "bInfo": false
+      } );      
+    {/foreach} 
+
+    {foreach $tables as $label}    
+    $('#{!$label}s td.drop').live('click', function () {        
+      tr = this.parentNode;
+      if (oTable{!$label}.fnIsOpen(tr)) closeTable(oTable{!$label},tr); else openTable(oTable{!$label},tr);
+    } );
+    {/foreach} 
+    
+    openHash();
+    });
+
+    function openTable(table,tr) {
+      $('#'+tr.id).toggleClass('border');
+      table.fnOpen(tr,unescape(tr.getAttribute('data-drop')),'details');
+    }       
+  </script>
+  <style type="text/css" n:syntax="off">
+    table tr td.name {white-space: nowrap;}
+    table tr td.text {width: 90%;}
+    table tr td {vertical-align: top;}
+    table#items tr td.name {width: 90%;}
+    table tr td.text {font-style: italic;}
+    table tr td.details ol {margin-top: 0px; margin-left: 25px;}
+    table tr td.details li {text-align: left; list-style-type: circle;}
+    table tr td.details li.exp {list-style-type: disc;}
+    table tr td.details li.end {list-style-type: square;}
+  </style>
+{/block}
+{block #content}
+     <h1 n:block="title"><a href="{$baseUri}"><img alt="" src="{$baseUri}/image/icon.png"></a>
+     Andor's Trail Quest List</h1>
+
+     <p><b>Spoiler alert:</b> This whole web is a little bit of spoiler, but this particularly page contains same information, 
+     witch you probably shouldn't know and can ruin some surprises and story twists. You probably can live long and prosper without 
+     ever see this page, so be careful a consider yourself warned.</p>
+     
+     <ul>      
+      <li><a href="#quests">Quest</a></li>
+      <li><a href="#items">Quest item</a></li>
+     </ul>
+
+     <h2>Quest</h2>
+     <table id="quests" width="90%">
+      <thead>
+      <tr><th> </th><th>Name</th> <th>Text</th></tr>
+      </thead>
+      <tbody>
+      {foreach $quests as $item}
+      
+      {capture $var}      
+      <ol n:inner-foreach="$item->related('quest_stage')->order('progress') as $stage">
+        <li n:class="$stage->finishesQuest ? end, $stage->rewardExperience ? exp">{$stage->logText}{if $stage->rewardExperience}<b>({$stage->rewardExperience} XP)</b>{/if} {if $stage->finishesQuest}<b>[End of quest]</b>{/if}</li>
+      </ol>
+
+      <table>        
+        <tr n:foreach="$item->related('quest_monster') as $quest">
+          {var $kind = $getCharacterKind($quest->ref('monster'))}
+          <td><a n:href="{$kind}list#{$quest->monster}" n:class="at-icon,$quest->ref('monster')->size, $quest->ref('monster')->unique ? 'unique'">{$quest->ref('monster')->iconID|ATIcon}</a></td>
+          <td class="left">{$quest->ref('monster')->name}</td><td></td>
+        </tr>
+        
+        <tr n:foreach="$item->related('quest_item') as $dropItem">
+          <td>
+            {if $dropItem->ref('item')->displaytype == quest}
+                <a n:href="questlist#{$dropItem->item}" class="at-icon quest">{$dropItem->ref('item')->iconID|ATIcon}</a>
+            {elseif $dropItem->ref('item')->ref('category')->actionType == use}
+                <a n:href="consumablelist#{$dropItem->item}" class="at-icon">{$dropItem->ref('item')->iconID|ATIcon}</a>
+            {elseif $dropItem->ref('item')->ref('category')->actionType == equip}
+                <a n:href="itemlist#{$dropItem->item}" n:class="at-icon, $dropItem->ref('item')->displaytype">{$dropItem->ref('item')->iconID|ATIcon}</a>
+            {else}
+                <div class="at-icon">{$dropItem->ref('item')->iconID|ATIcon}</div>
+            {/if}
+          </td>
+          <td class="left">{$dropItem->ref('item')->name}</td>
+          <td>{$dropItem->quantity}</td>
+        </tr>
+
+      </table>
+      {/capture}
+      
+      <tr id="{$item->id}" data-drop="{!$var|strip|pure}">        
+          <td class="icon"><a href="#{$item->id}"  class="at-icon">{$quest_icon|ATIcon}</a></td>
+          <td n:class="left, name, $var ? drop">{$item->name}</td>
+          <td class="left text">
+          {var $stage = $item->related('quest_stage')->order('progress')->fetch()}
+          {$stage->logText|truncate:100}
+          </td>
+      </tr>
+      {/foreach}
+    </tbody>
+    </table>
+
+    <h2>Quest Items</h2>
+     <table id="items" width="30%">
+      <thead>
+      <tr><th> </th><th>Name</th></tr>
+      </thead>
+      <tbody>
+      {foreach $items as $item}
+      {capture $var}
+      <table>
+      {foreach $item->related('droplist_item') as $dropItem}
+          <tr n:foreach="$dropItem->ref('droplist')->related('monster') as $monster">
+             {var $kind = $getCharacterKind($monster)}
+             <td><a n:href="{$kind}list#{$monster->id}" n:class="at-icon,$monster->size, $monster->unique ? 'unique'">{$monster->iconID|ATIcon}</a></td>
+             <td class="left">{$monster->name}</td>
+             <td>{$dropItem->quantityMin}{if $dropItem->quantityMin!=$dropItem->quantityMax}-{$dropItem->quantityMax}{/if}</td>
+             <td>{if ($kind == npc) and ($dropItem->chance == 100)}sell{else}{$dropItem->chance}%{/if}</td>
+          </tr>
+      {/foreach}
+          <tr n:foreach="$item->related('quest_item')->fetchPairs('quest') as $questItem">
+              <td><a href="#{$questItem->quest}" class="at-icon">{$quest_icon|ATIcon}</td>
+              <td class="left">{$questItem->ref('quest')->name}</td>
+              <td></td>
+              <td></td>
+          </tr>
+      </table>
+      {/capture}
+      <tr id="{$item->id}" data-drop="{$var|strip|pure}">        
+          <td class="icon"><a href="#{$item->id}"  class="at-icon quest">{$item->iconID|ATIcon}</a></td>
+          <td n:class="left, name, $var ? drop">{$item->name}</td>
+      </tr>
+      {/foreach}
+    </tbody>
+    </table>
+{/block}

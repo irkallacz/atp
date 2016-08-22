@@ -1,0 +1,98 @@
+{block #head}
+  <style type="text/css" n:syntax="off">
+  .icon {width: 50px}
+  table.dataTable td.name {width: 50%}
+  .cond {width: 30%}
+  </style>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    {foreach $tables as $label =>$table}
+      oTable{!$label} = $('#{!$label}s').dataTable({ 
+        "bPaginate": false,
+        "bFilter": false,
+        "bInfo": false,
+        "aoColumnDefs": [
+       {block |strip}
+       {foreach $table['fields'] as $colum => $field} 
+        {if $field =='HP'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatHP(data,type) } } ,{/if}
+        {if $field =='AP'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatAP(data,type) } } ,{/if}
+       {/foreach}
+       {/block}
+        ]
+      } );      
+    {/foreach} 
+
+    {foreach $tables as $label => $table}    
+    $('#{!$label}s td.drop').live('click', function () {        
+      tr = this.parentNode;
+      if (oTable{!$label}.fnIsOpen(tr)) closeTable(oTable{!$label},tr); else openTable(oTable{!$label},tr);
+    } );
+    {/foreach} 
+    
+    openHash();
+    });     
+  </script>
+{/block}
+{block #content}
+     <h1 n:block="title"><a n:href="default"><img alt="" src="{$baseUri}/image/icon.png"></a>Andor's Trail Consumable List</h1>
+     <ul>
+      {foreach $tables as $label => $table}    
+      <li><a href="#{$label}s">{$label|firstUpper}</a></li>
+      {/foreach}    
+     </ul>
+    
+    {foreach $tables as $label =>$table}
+     <h2>{$label|firstUpper}</h2>
+     <table id="{$label}s" width="{$table['width']}">
+      <thead>
+      <tr>{block|strip}
+        <th n:foreach="$table['fields'] as $field">{$field}</th>
+      {/block}</tr>
+      </thead>
+      <tbody>
+      {var $items = clone $consumable}
+      {foreach $items->where('category',$table['category']) as $item}
+      {capture $var}
+        {foreach $item->related('droplist_item') as $dropItem}
+        <tr n:foreach="$dropItem->ref('droplist')->related('monster') as $monster">
+            {var $kind = $getCharacterKind($monster)}
+            <td><a n:href="{$kind}list#{$monster->id}" n:class="at-icon, $monster->size">{$monster->iconID|ATIcon}</a></td>
+            <td class="left">{$monster->name}</td>
+            <td>{$dropItem->quantityMin}{if $dropItem->quantityMin!=$dropItem->quantityMax}-{$dropItem->quantityMax}{/if}</td>
+            <td>{if ($kind == npc) and ($dropItem->chance == 100)}sell{else}{$dropItem->chance}%{/if}</td>
+        </tr>
+        {/foreach}
+      {foreach $item->related('quest_item') as $questItem}
+          <tr>
+              <td><a n:href="questlist#$questItem->quest" class="at-icon">{$quest_icon|ATIcon}</td>
+              <td class="left">{$questItem->ref('quest')->name}</td>
+              <td></td>
+              <td></td>
+          </tr>
+      {/foreach}
+      {/capture}            
+      <tr id="{$item->id}" data-drop="{!$var|pure}">
+        {foreach $table['fields'] as $colum => $field}                            
+          <td n:if="$colum == icon" class="icon"><span class="hidden">{$item->id}</span><a href="#{$item->id}" class="at-icon">{$item->iconID|ATIcon}</a></td>
+          <td n:if="$colum == name" n:class="left, name, $var ? drop">{$item->name}</td>
+          <td n:if="$colum == 'hp'">
+              {if $item->useEffect}
+                  {var $use = json_decode($item->useEffect,TRUE)}
+                  {if array_key_exists('increaseCurrentHP',$use)}
+                      {var $min = array_key_exists('min',$use['increaseCurrentHP']) ? $use['increaseCurrentHP']['min'] : 0}
+                      {$min|range: $use['increaseCurrentHP']['max']}
+                  {/if}
+              {/if}
+          </td>
+          <td n:if="$colum == 'cond'" class="cond">
+          {foreach $item->related('condition') as $cond} {include #Conditions, cond => $cond}{/foreach}
+          </td>
+          {continueIf in_array($colum,array('icon','name','category','cond','hp'))}
+          <td>{$item[$colum]}</td>
+        {/foreach}
+      </tr>
+      {/foreach}
+    </tbody>
+    </table>
+    {/foreach}
+{/block}

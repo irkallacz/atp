@@ -1,0 +1,75 @@
+body {text-align: center; background-color: gray; font-family: Arial,sans-serif; color: silver;}
+a img {border: none;}
+
+#areamap {position: relative; margin: 1em auto 1em auto;}
+
+#map {position: relative; left: 0; top: 0; margin: 1em auto 0em auto; display: inline-block;}
+#map .entrance, #map .npc, #areamap a.area, #map a.sign, #map #above {position: absolute; display: block;}
+#map .entrance, #map a.sign, #map a.npc {background-image: url('../image/alfa.gif');}
+#map a.sign {border: 1px dotted black;}
+#map #image {clear: both; margin-bottom: 1ex;}
+#map #above {left: 0px; top: 0px;}
+
+#map .entrance, #areamap a.area:hover img {border: 1px solid red;}
+#map a.npc:target, #map a.npc.current {border: 1px solid yellow;}
+#areamap a.area:target img, #map .entrance:target {border: 1px solid blue;}
+#areamap a.area img {border: 1px solid gray;}
+
+#map .npc {width: 32px; height: 32px; float: left; overflow: hidden;}
+#map .size2x2 {width: 64px; height: 64px;}
+#map a {font-family: sans-serif;}
+
+.menu {list-style-type: none; display: block; font-weight: bold; padding: 1ex; margin: 0 auto; background-color: rgba(0,0,0,0.8);}
+.menu li {display: inline; margin: 0ex 5px; font-weight: bold;}
+.menu a {text-decoration: none; color: silver; white-space: nowrap;}
+.menu a.current {color: white;}
+.menu a:hover {text-decoration: underline;}
+
+#top  {position: static; text-align: center; width: 95%; margin: 0 auto; z-index: 10; top: 1ex;}
+#top.world li ul, #top li:hover ul, #top li:active ul, #top a:hover+ul, #top a:active+ul{display: block}
+#top li ul {position: absolute; width: 95%; display: none; z-index: 11;}
+#top li ul li {display: inline}
+
+#bottom {text-align: left; background-color: #1A1A1A; display: table; width: 100%;}
+#bottom.menu a {white-space: normal}
+#worldmaplink {text-align: right}
+
+@-webkit-keyframes zoom-out {
+    from   {transform: scale(4); border: 1px solid gray;}
+    to {transform: scale(1)}
+}
+
+@keyframes zoom-out {
+    from   {transform: scale(4); border: 1px solid gray;}
+    to {transform: scale(1)}
+}
+
+@-webkit-keyframes zoom-in {
+    from   {transform: scale(1)}
+    to {transform: scale(4); border: 1px solid gray;}
+}
+
+@keyframes zoom-in {
+    from   {transform: scale(1)}
+    to {transform: scale(4); border: 1px solid gray;}
+}
+
+@media only screen and (min-width: 768px) {
+    #top {position: fixed;}
+    #map, #areamap {margin-top: 3em;}
+    /*#bottom {width: 100%;}*/
+
+    #areamap a.area:target img {-webkit-animation: 0.7s zoom-out ease-in; animation: 0.7s zoom-out ease-in; z-index: 5;}
+    #areamap a.area.click img {-webkit-animation: 0.7s zoom-in ease-in forwards; animation: 0.7s zoom-in ease-in forwards; z-index: 5;}
+
+    /*#areamap a.area.click img, #areamap a.area:target img {animation: 0.7s zoom-in ease-in normal forwards; z-index: 5;}*/
+    /*#areamap a.area.click img {z-index: 7;}*/
+    /*#areamap a.area:target img {animation-direction: reverse;}*/
+    /*#areamap a.area.click:target img {animation-iteration-count: infinite; animation-direction: normal;}*/
+
+    #map.click {transition-property: left, top; transition-duration: 0.7s; transition-timing-function: ease-in;}
+    #map.west{left: 100%}
+    #map.east{left: -100%}
+    #map.north{top: 100%}
+    #map.south{top: -100%}
+}

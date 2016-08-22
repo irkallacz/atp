@@ -1,0 +1,101 @@
+{block #head}
+  <script type="text/javascript">
+    $(document).ready(function(){
+    {foreach $tables as $label =>$table}
+      oTable{!$label} = $('#{!$label}s').dataTable({ 
+        "bPaginate": false,
+        "bFilter": false,
+        "bInfo": false,
+        "aoColumnDefs": [
+       {block |strip}
+       {foreach $table['fields'] as $colum => $field} 
+        {if $field =='BC%' or $field =='AC%'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatP(data,type) } } ,{/if}
+        {if $field =='HP'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatHP(data,type) } } ,{/if}
+        {if $field =='Attack cost' or $field =='Move cost' or $field =='Max AP'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatAP(data,type) } } ,{/if}
+       {/foreach}
+       {/block}
+        ]
+      } );      
+    {/foreach} 
+
+    {foreach $tables as $label => $table}    
+    $('#{!$label}s td.drop').live('click', function () {        
+      tr = this.parentNode;
+      if (oTable{!$label}.fnIsOpen(tr)) closeTable(oTable{!$label},tr); else openTable(oTable{!$label},tr);
+    } );
+    {/foreach} 
+    
+    openHash();
+    });     
+  </script>
+{/block}
+{block #content}
+     <h1 n:block="title"><a n:href="default"><img alt="" src="{$baseUri}/image/icon.png"></a>Andor's Trail Item List</h1>
+     <ul id="toc">
+      {foreach $tables as $label => $table}    
+      <li><a href="#{$label}s">{$label|firstUpper}</a></li>
+      {/foreach}    
+     </ul>
+    
+    {foreach $tables as $label =>$table}
+     <h2>{$label|firstUpper}</h2>
+     <table id="{$label}s" width="{$table['width']}">
+      <thead>
+      <tr>{block|strip}
+        <th n:foreach="$table['fields'] as $field">{$field}</th>
+      {/block}</tr>
+      </thead>
+      <tbody>
+      {var $items = clone $equipment}
+      {foreach $items->where('category.inventorySlot',$table['slot']) as $item}
+      {capture $var}
+      {foreach $item->related('droplist_item') as $dropItem}
+        {foreach $dropItem->droplist->related('monster') as $monster}
+          <tr>
+              {var $kind = $getCharacterKind($monster)}
+              <td><a n:href="{$kind}list#{$monster->id}" n:class="at-icon,$monster->size, $monster->unique ? 'unique'">{$monster->iconID|ATIcon}</a></td>
+              <td class="left">{$monster->name}</td>
+              <td>{$dropItem->quantityMin}{if $dropItem->quantityMin!=$dropItem->quantityMax}-{$dropItem->quantityMax}{/if}</td>
+              <td>{if ($kind == npc) and ($dropItem->chance == 100)}sell{else}{$dropItem->chance}%{/if}</td>
+          </tr>
+        {/foreach}
+      {/foreach}
+      {foreach $item->related('quest_item') as $questItem}
+          <tr>
+              <td><a n:href="questlist#$questItem->quest" class="at-icon">{$quest_icon|ATIcon}</td>
+              <td class="left">{$questItem->ref('quest')->name}</td>
+              <td></td>
+              <td></td>
+          </tr>
+      {/foreach}
+      {/capture}      
+      <tr id="{$item->id}" data-drop="{!$var|strip|pure}">
+        {var $equip = $item->related('equip')->fetch()}
+        {foreach $table['fields'] as $colum => $field}                            
+          <td n:if="$colum == icon" class="icon">
+              <span n:if="$item->displaytype" class="hidden">{$type[$item->displaytype]}</span>
+              <a title="{$item->displaytype}" href="#{$item->id}" class="at-icon {$item->displaytype}">{$item->iconID|ATIcon}</a>
+          </td>
+          <td n:if="$colum == name" n:class="left, name, $var ? drop">
+              {$item->name}
+          </td>
+          <td n:if="$colum == damage">
+              {$equip->increaseAttackDamageMin}{if $equip->increaseAttackDamageMin!=$equip->increaseAttackDamageMax}-{$equip->increaseAttackDamageMax}{/if}
+          </td>
+          <td n:if="$colum == category" class="left category">
+              {$item->ref('category')->name}
+          </td>
+          <td n:if="$colum == cond" class="cond">
+          {foreach $item->related('item_condition') as $itemCond} {include #Conditions, cond => $itemCond}{/foreach}
+          {if $item->hitEffect}{include #Effect, effect => $item->hitEffect, label => 'hit'}{/if}
+          {if $item->killEffect}{include #Effect, effect => $item->killEffect, label => 'kill'}{/if}
+          </td>
+          {continueIf in_array($colum,array('icon','name','category','cond','info','damage'))}
+          <td>{if $equip[$colum]}{$equip[$colum]}{/if}</td>
+        {/foreach}
+      </tr>
+      {/foreach}
+    </tbody>
+    </table>
+    {/foreach}
+{/block}

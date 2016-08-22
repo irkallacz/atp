@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Andor's Trail Interactive map [0.7.0] | world1</title>
+    <link rel="shortcut icon" href="http://andorstrail.irkalla.cz/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="http://andorstrail.irkalla.cz/css/map.css">
+    <script src="http://andorstrail.irkalla.cz/js/map.js" type="text/javascript"></script>
+    <script>
+        (function(G,o,O,g,l){G.GoogleAnalyticsObject=O;G[O]||(G[O]=function(){(G[O].q=G[O].q||[]).push(arguments)});G[O].l=+new Date;g=o.createElement('script'),l=o.scripts[0];g.src='//www.google-analytics.com/analytics.js';l.parentNode.insertBefore(g,l)}(this,document,'ga'));ga('create','UA-56930109-1');ga('send','pageview')
+    </script>
+</head>
+<body onload="bindZoom()">
+    <ul id="top"  class="menu world">
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/">HOME</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/itemlist.php">EQUIPMENT</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/consumablelist.php">CONSUMABLE</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php">MONSTER</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/npclist.php">NPC &amp; MERCHANT</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/conditionlist.php">CONDITION</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/questlist.php">QUEST</a>
+        </li>
+        <li>
+                    <a class="current" href="http://andorstrail.irkalla.cz/0.7.0/map/">MAP</a>
+                    <ul class="menu">
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/blackwater.html">Blackwater
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwcave1.html">Blackwater cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwcave2.html">Blackwater cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwentry.html">Blackwater entry
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwsettlement.html">Blackwater settlement
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/flagstone.html">Flagstone
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/gargoylecave.html">Gargoyle cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/lodar5cave.html">Green maze cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/lodarcave.html">Lodar cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave.html">Mountain cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/pwcave.html">Pw cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/snakecave.html">Snake cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhavencave.html">Cave on way to Brimhaven
+</a></li>
+                    </ul>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/disqus.php">DISQUS</a>
+        </li>
+    </ul>
+    <div id="areamap" style="width: 1610px; height: 1030px" class="world">
+        <a id="lodar21" class="area" style="left: 726px; top: 730px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar21.html">
+            <img alt="lodar21" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar21_area.jpg" width="40" height="40">
+        </a>
+        <a id="lodar20" class="area" style="left: 726px; top: 668px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar20.html">
+            <img alt="lodar20" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar20_area.jpg" width="40" height="60">
+        </a>
+        <a id="waytominingtown1a" class="area" style="left: 728px; top: 814px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytominingtown1a.html">
+            <img alt="waytominingtown1a" src="http://andorstrail.irkalla.cz/0.7.0/map/waytominingtown1a_area.jpg" width="38" height="24">
+        </a>
+        <a id="waytobrimhaven2" class="area" style="left: 644px; top: 474px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhaven2.html">
+            <img alt="waytobrimhaven2" src="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhaven2_area.jpg" width="60" height="60">
+        </a>
+        <a id="waytobrimhaven3" class="area" style="left: 706px; top: 478px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhaven3.html">
+            <img alt="waytobrimhaven3" src="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhaven3_area.jpg" width="60" height="60">
+        </a>
+        <a id="waytobrimhaven0" class="area" style="left: 516px; top: 502px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhaven0.html">
+            <img alt="waytobrimhaven0" src="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhaven0_area.jpg" width="64" height="32">
+        </a>
+        <a id="waytobrimhaven1" class="area" style="left: 582px; top: 494px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhaven1.html">
+            <img alt="waytobrimhaven1" src="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhaven1_area.jpg" width="60" height="40">
+        </a>
+        <a id="roadtocarntower1" class="area" style="left: 212px; top: 600px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadtocarntower1.html">
+            <img alt="roadtocarntower1" src="http://andorstrail.irkalla.cz/0.7.0/map/roadtocarntower1_area.jpg" width="60" height="40">
+        </a>
+        <a id="roadtocarntower0" class="area" style="left: 274px; top: 600px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadtocarntower0.html">
+            <img alt="roadtocarntower0" src="http://andorstrail.irkalla.cz/0.7.0/map/roadtocarntower0_area.jpg" width="60" height="40">
+        </a>
+        <a id="woodsettlement0" class="area" style="left: 380px; top: 734px" href="http://andorstrail.irkalla.cz/0.7.0/map/woodsettlement0.html">
+            <img alt="woodsettlement0" src="http://andorstrail.irkalla.cz/0.7.0/map/woodsettlement0_area.jpg" width="60" height="28">
+        </a>
+        <a id="roadtocarntower2" class="area" style="left: 150px; top: 600px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadtocarntower2.html">
+            <img alt="roadtocarntower2" src="http://andorstrail.irkalla.cz/0.7.0/map/roadtocarntower2_area.jpg" width="60" height="52">
+        </a>
+        <a id="lodar8" class="area" style="left: 602px; top: 644px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar8.html">
+            <img alt="lodar8" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar8_area.jpg" width="60" height="60">
+        </a>
+        <a id="lodar9" class="area" style="left: 664px; top: 554px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar9.html">
+            <img alt="lodar9" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar9_area.jpg" width="60" height="50">
+        </a>
+        <a id="lodar6" class="area" style="left: 502px; top: 644px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar6.html">
+            <img alt="lodar6" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar6_area.jpg" width="36" height="60">
+        </a>
+        <a id="lodar7" class="area" style="left: 540px; top: 644px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar7.html">
+            <img alt="lodar7" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar7_area.jpg" width="60" height="60">
+        </a>
+        <a id="lodar4" class="area" style="left: 602px; top: 592px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar4.html">
+            <img alt="lodar4" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar4_area.jpg" width="60" height="50">
+        </a>
+        <a id="lodar5" class="area" style="left: 540px; top: 612px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar5.html">
+            <img alt="lodar5" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar5_area.jpg" width="60" height="30">
+        </a>
+        <a id="lodar2" class="area" style="left: 540px; top: 550px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar2.html">
+            <img alt="lodar2" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar2_area.jpg" width="60" height="60">
+        </a>
+        <a id="fields9" class="area" style="left: 212px; top: 568px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields9.html">
+            <img alt="fields9" src="http://andorstrail.irkalla.cz/0.7.0/map/fields9_area.jpg" width="60" height="30">
+        </a>
+        <a id="lodar3" class="area" style="left: 602px; top: 550px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar3.html">
+            <img alt="lodar3" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar3_area.jpg" width="60" height="40">
+        </a>
+        <a id="lodar10" class="area" style="left: 726px; top: 554px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar10.html">
+            <img alt="lodar10" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar10_area.jpg" width="40" height="50">
+        </a>
+        <a id="waterway9" class="area" style="left: 1078px; top: 456px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway9.html">
+            <img alt="waterway9" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway9_area.jpg" width="60" height="60">
+        </a>
+        <a id="fields6" class="area" style="left: 336px; top: 448px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields6.html">
+            <img alt="fields6" src="http://andorstrail.irkalla.cz/0.7.0/map/fields6_area.jpg" width="60" height="56">
+        </a>
+        <a id="waterway8" class="area" style="left: 1016px; top: 456px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway8.html">
+            <img alt="waterway8" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway8_area.jpg" width="60" height="60">
+        </a>
+        <a id="fields5" class="area" style="left: 274px; top: 444px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields5.html">
+            <img alt="fields5" src="http://andorstrail.irkalla.cz/0.7.0/map/fields5_area.jpg" width="60" height="60">
+        </a>
+        <a id="lodar12" class="area" style="left: 726px; top: 606px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar12.html">
+            <img alt="lodar12" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar12_area.jpg" width="40" height="60">
+        </a>
+        <a id="fields8" class="area" style="left: 274px; top: 568px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields8.html">
+            <img alt="fields8" src="http://andorstrail.irkalla.cz/0.7.0/map/fields8_area.jpg" width="60" height="30">
+        </a>
+        <a id="lodar11" class="area" style="left: 664px; top: 606px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar11.html">
+            <img alt="lodar11" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar11_area.jpg" width="60" height="60">
+        </a>
+        <a id="fields7" class="area" style="left: 398px; top: 456px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields7.html">
+            <img alt="fields7" src="http://andorstrail.irkalla.cz/0.7.0/map/fields7_area.jpg" width="54" height="48">
+        </a>
+        <a id="lodar14" class="area" style="left: 564px; top: 706px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar14.html">
+            <img alt="lodar14" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar14_area.jpg" width="38" height="60">
+        </a>
+        <a id="fields2" class="area" style="left: 274px; top: 506px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields2.html">
+            <img alt="fields2" src="http://andorstrail.irkalla.cz/0.7.0/map/fields2_area.jpg" width="60" height="60">
+        </a>
+        <a id="lodar13" class="area" style="left: 502px; top: 706px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar13.html">
+            <img alt="lodar13" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar13_area.jpg" width="60" height="24">
+        </a>
+        <a id="fields1" class="area" style="left: 336px; top: 506px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields1.html">
+            <img alt="fields1" src="http://andorstrail.irkalla.cz/0.7.0/map/fields1_area.jpg" width="60" height="60">
+        </a>
+        <a id="lodar16" class="area" style="left: 604px; top: 706px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar16.html">
+            <img alt="lodar16" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar16_area.jpg" width="58" height="60">
+        </a>
+        <a id="fields4" class="area" style="left: 398px; top: 506px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields4.html">
+            <img alt="fields4" src="http://andorstrail.irkalla.cz/0.7.0/map/fields4_area.jpg" width="54" height="48">
+        </a>
+        <a id="lodar15" class="area" style="left: 564px; top: 768px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar15.html">
+            <img alt="lodar15" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar15_area.jpg" width="38" height="38">
+        </a>
+        <a id="fields3" class="area" style="left: 232px; top: 526px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields3.html">
+            <img alt="fields3" src="http://andorstrail.irkalla.cz/0.7.0/map/fields3_area.jpg" width="40" height="40">
+        </a>
+        <a id="lodar18" class="area" style="left: 664px; top: 668px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar18.html">
+            <img alt="lodar18" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar18_area.jpg" width="60" height="60">
+        </a>
+        <a id="lodar17" class="area" style="left: 604px; top: 768px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar17.html">
+            <img alt="lodar17" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar17_area.jpg" width="58" height="38">
+        </a>
+        <a id="woodcave0" class="area" style="left: 380px; top: 662px" href="http://andorstrail.irkalla.cz/0.7.0/map/woodcave0.html">
+            <img alt="woodcave0" src="http://andorstrail.irkalla.cz/0.7.0/map/woodcave0_area.jpg" width="60" height="38">
+        </a>
+        <a id="fields0" class="area" style="left: 336px; top: 568px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields0.html">
+            <img alt="fields0" src="http://andorstrail.irkalla.cz/0.7.0/map/fields0_area.jpg" width="60" height="30">
+        </a>
+        <a id="lodar19" class="area" style="left: 664px; top: 730px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar19.html">
+            <img alt="lodar19" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar19_area.jpg" width="60" height="40">
+        </a>
+        <a id="wild14_clearing" class="area" style="left: 610px; top: 916px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild14_clearing.html">
+            <img alt="wild14_clearing" src="http://andorstrail.irkalla.cz/0.7.0/map/wild14_clearing_area.jpg" width="30" height="30">
+        </a>
+        <a id="fallhaven_nw" class="area" style="left: 398px; top: 764px" href="http://andorstrail.irkalla.cz/0.7.0/map/fallhaven_nw.html">
+            <img alt="fallhaven_nw" src="http://andorstrail.irkalla.cz/0.7.0/map/fallhaven_nw_area.jpg" width="60" height="60">
+        </a>
+        <a id="waterway12" class="area" style="left: 892px; top: 456px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway12.html">
+            <img alt="waterway12" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway12_area.jpg" width="60" height="60">
+        </a>
+        <a id="waterway11" class="area" style="left: 1140px; top: 456px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway11.html">
+            <img alt="waterway11" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway11_area.jpg" width="60" height="60">
+        </a>
+        <a id="mountainlake10a" class="area" style="left: 1426px; top: 62px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake10a.html">
+            <img alt="mountainlake10a" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake10a_area.jpg" width="50" height="40">
+        </a>
+        <a id="waterway14" class="area" style="left: 784px; top: 332px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway14.html">
+            <img alt="waterway14" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway14_area.jpg" width="60" height="60">
+        </a>
+        <a id="waterway13" class="area" style="left: 954px; top: 456px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway13.html">
+            <img alt="waterway13" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway13_area.jpg" width="60" height="60">
+        </a>
+        <a id="blackwater_mountain4" class="area" style="left: 6px; top: 806px" href="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain4.html">
+            <img alt="blackwater_mountain4" src="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain4_area.jpg" width="30" height="30">
+        </a>
+        <a id="waterway15" class="area" style="left: 800px; top: 394px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway15.html">
+            <img alt="waterway15" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway15_area.jpg" width="44" height="60">
+        </a>
+        <a id="waterway11_east" class="area" style="left: 1202px; top: 458px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway11_east.html">
+            <img alt="waterway11_east" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway11_east_area.jpg" width="60" height="50">
+        </a>
+        <a id="fallhaven_ne" class="area" style="left: 460px; top: 764px" href="http://andorstrail.irkalla.cz/0.7.0/map/fallhaven_ne.html">
+            <img alt="fallhaven_ne" src="http://andorstrail.irkalla.cz/0.7.0/map/fallhaven_ne_area.jpg" width="60" height="60">
+        </a>
+        <a id="waterway10" class="area" style="left: 1078px; top: 518px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway10.html">
+            <img alt="waterway10" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway10_area.jpg" width="60" height="36">
+        </a>
+        <a id="wild3" class="area" style="left: 324px; top: 772px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild3.html">
+            <img alt="wild3" src="http://andorstrail.irkalla.cz/0.7.0/map/wild3_area.jpg" width="40" height="40">
+        </a>
+        <a id="wild2" class="area" style="left: 282px; top: 772px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild2.html">
+            <img alt="wild2" src="http://andorstrail.irkalla.cz/0.7.0/map/wild2_area.jpg" width="40" height="40">
+        </a>
+        <a id="wild5" class="area" style="left: 296px; top: 814px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild5.html">
+            <img alt="wild5" src="http://andorstrail.irkalla.cz/0.7.0/map/wild5_area.jpg" width="52" height="40">
+        </a>
+        <a id="wild4" class="area" style="left: 380px; top: 702px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild4.html">
+            <img alt="wild4" src="http://andorstrail.irkalla.cz/0.7.0/map/wild4_area.jpg" width="60" height="30">
+        </a>
+        <a id="wild7" class="area" style="left: 272px; top: 918px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild7.html">
+            <img alt="wild7" src="http://andorstrail.irkalla.cz/0.7.0/map/wild7_area.jpg" width="40" height="40">
+        </a>
+        <a id="wild6" class="area" style="left: 288px; top: 856px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild6.html">
+            <img alt="wild6" src="http://andorstrail.irkalla.cz/0.7.0/map/wild6_area.jpg" width="60" height="60">
+        </a>
+        <a id="wild9" class="area" style="left: 350px; top: 868px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild9.html">
+            <img alt="wild9" src="http://andorstrail.irkalla.cz/0.7.0/map/wild9_area.jpg" width="60" height="48">
+        </a>
+        <a id="wild8" class="area" style="left: 230px; top: 936px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild8.html">
+            <img alt="wild8" src="http://andorstrail.irkalla.cz/0.7.0/map/wild8_area.jpg" width="40" height="30">
+        </a>
+        <a id="blackwater_mountain0" class="area" style="left: 84px; top: 938px" href="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain0.html">
+            <img alt="blackwater_mountain0" src="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain0_area.jpg" width="40" height="30">
+        </a>
+        <a id="roadbeforecrossroads" class="area" style="left: 398px; top: 618px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads.html">
+            <img alt="roadbeforecrossroads" src="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads_area.jpg" width="42" height="42">
+        </a>
+        <a id="blackwater_mountain1" class="area" style="left: 0px; top: 882px" href="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain1.html">
+            <img alt="blackwater_mountain1" src="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain1_area.jpg" width="40" height="40">
+        </a>
+        <a id="blackwater_mountain2" class="area" style="left: 0px; top: 860px" href="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain2.html">
+            <img alt="blackwater_mountain2" src="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain2_area.jpg" width="40" height="20">
+        </a>
+        <a id="blackwater_mountain3" class="area" style="left: 6px; top: 838px" href="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain3.html">
+            <img alt="blackwater_mountain3" src="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain3_area.jpg" width="30" height="20">
+        </a>
+        <a id="wild1" class="area" style="left: 336px; top: 706px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild1.html">
+            <img alt="wild1" src="http://andorstrail.irkalla.cz/0.7.0/map/wild1_area.jpg" width="42" height="42">
+        </a>
+        <a id="wild0" class="area" style="left: 336px; top: 662px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild0.html">
+            <img alt="wild0" src="http://andorstrail.irkalla.cz/0.7.0/map/wild0_area.jpg" width="42" height="42">
+        </a>
+        <a id="wild17" class="area" style="left: 42px; top: 910px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild17.html">
+            <img alt="wild17" src="http://andorstrail.irkalla.cz/0.7.0/map/wild17_area.jpg" width="40" height="40">
+        </a>
+        <a id="roadbeforecrossroads8" class="area" style="left: 648px; top: 840px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads8.html">
+            <img alt="roadbeforecrossroads8" src="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads8_area.jpg" width="40" height="54">
+        </a>
+        <a id="wild15" class="area" style="left: 648px; top: 896px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild15.html">
+            <img alt="wild15" src="http://andorstrail.irkalla.cz/0.7.0/map/wild15_area.jpg" width="40" height="30">
+        </a>
+        <a id="mountainlake13a" class="area" style="left: 1274px; top: 100px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake13a.html">
+            <img alt="mountainlake13a" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake13a_area.jpg" width="30" height="50">
+        </a>
+        <a id="roadbeforecrossroads9" class="area" style="left: 690px; top: 840px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads9.html">
+            <img alt="roadbeforecrossroads9" src="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads9_area.jpg" width="50" height="48">
+        </a>
+        <a id="wild16" class="area" style="left: 126px; top: 938px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild16.html">
+            <img alt="wild16" src="http://andorstrail.irkalla.cz/0.7.0/map/wild16_area.jpg" width="40" height="30">
+        </a>
+        <a id="roadbeforecrossroads6" class="area" style="left: 564px; top: 810px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads6.html">
+            <img alt="roadbeforecrossroads6" src="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads6_area.jpg" width="40" height="60">
+        </a>
+        <a id="wild13" class="area" style="left: 564px; top: 872px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild13.html">
+            <img alt="wild13" src="http://andorstrail.irkalla.cz/0.7.0/map/wild13_area.jpg" width="40" height="30">
+        </a>
+        <a id="roadbeforecrossroads7" class="area" style="left: 606px; top: 840px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads7.html">
+            <img alt="roadbeforecrossroads7" src="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads7_area.jpg" width="40" height="40">
+        </a>
+        <a id="wild14" class="area" style="left: 606px; top: 882px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild14.html">
+            <img alt="wild14" src="http://andorstrail.irkalla.cz/0.7.0/map/wild14_area.jpg" width="40" height="32">
+        </a>
+        <a id="flagstone0" class="area" style="left: 168px; top: 938px" href="http://andorstrail.irkalla.cz/0.7.0/map/flagstone0.html">
+            <img alt="flagstone0" src="http://andorstrail.irkalla.cz/0.7.0/map/flagstone0_area.jpg" width="60" height="60">
+        </a>
+        <a id="roadbeforecrossroads4" class="area" style="left: 522px; top: 764px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads4.html">
+            <img alt="roadbeforecrossroads4" src="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads4_area.jpg" width="40" height="40">
+        </a>
+        <a id="wild11" class="area" style="left: 454px; top: 868px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild11.html">
+            <img alt="wild11" src="http://andorstrail.irkalla.cz/0.7.0/map/wild11_area.jpg" width="40" height="40">
+        </a>
+        <a id="roadbeforecrossroads5" class="area" style="left: 522px; top: 806px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads5.html">
+            <img alt="roadbeforecrossroads5" src="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads5_area.jpg" width="40" height="44">
+        </a>
+        <a id="wild12" class="area" style="left: 522px; top: 852px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild12.html">
+            <img alt="wild12" src="http://andorstrail.irkalla.cz/0.7.0/map/wild12_area.jpg" width="40" height="40">
+        </a>
+        <a id="roadbeforecrossroads2" class="area" style="left: 442px; top: 696px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads2.html">
+            <img alt="roadbeforecrossroads2" src="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads2_area.jpg" width="58" height="60">
+        </a>
+        <a id="roadbeforecrossroads3" class="area" style="left: 502px; top: 732px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads3.html">
+            <img alt="roadbeforecrossroads3" src="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads3_area.jpg" width="60" height="30">
+        </a>
+        <a id="wild10" class="area" style="left: 412px; top: 868px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild10.html">
+            <img alt="wild10" src="http://andorstrail.irkalla.cz/0.7.0/map/wild10_area.jpg" width="40" height="40">
+        </a>
+        <a id="waterway6" class="area" style="left: 768px; top: 456px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway6.html">
+            <img alt="waterway6" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway6_area.jpg" width="60" height="60">
+        </a>
+        <a id="waterway7" class="area" style="left: 830px; top: 456px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway7.html">
+            <img alt="waterway7" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway7_area.jpg" width="60" height="60">
+        </a>
+        <a id="waterway4" class="area" style="left: 722px; top: 332px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway4.html">
+            <img alt="waterway4" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway4_area.jpg" width="60" height="60">
+        </a>
+        <a id="waterway5" class="area" style="left: 738px; top: 394px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway5.html">
+            <img alt="waterway5" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway5_area.jpg" width="60" height="60">
+        </a>
+        <a id="waterway2" class="area" style="left: 660px; top: 300px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway2.html">
+            <img alt="waterway2" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway2_area.jpg" width="60" height="60">
+        </a>
+        <a id="waterway3" class="area" style="left: 598px; top: 300px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway3.html">
+            <img alt="waterway3" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway3_area.jpg" width="60" height="40">
+        </a>
+        <a id="waterway0" class="area" style="left: 536px; top: 384px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway0.html">
+            <img alt="waterway0" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway0_area.jpg" width="60" height="60">
+        </a>
+        <a id="waterway1" class="area" style="left: 598px; top: 342px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterway1.html">
+            <img alt="waterway1" src="http://andorstrail.irkalla.cz/0.7.0/map/waterway1_area.jpg" width="60" height="60">
+        </a>
+        <a id="road4_gargoylecave" class="area" style="left: 828px; top: 876px" href="http://andorstrail.irkalla.cz/0.7.0/map/road4_gargoylecave.html">
+            <img alt="road4_gargoylecave" src="http://andorstrail.irkalla.cz/0.7.0/map/road4_gargoylecave_area.jpg" width="30" height="30">
+        </a>
+        <a id="lodar1" class="area" style="left: 442px; top: 618px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar1.html">
+            <img alt="lodar1" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar1_area.jpg" width="34" height="24">
+        </a>
+        <a id="lodar0" class="area" style="left: 478px; top: 582px" href="http://andorstrail.irkalla.cz/0.7.0/map/lodar0.html">
+            <img alt="lodar0" src="http://andorstrail.irkalla.cz/0.7.0/map/lodar0_area.jpg" width="60" height="60">
+        </a>
+        <a id="waytomountaincave1" class="area" style="left: 1220px; top: 570px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytomountaincave1.html">
+            <img alt="waytomountaincave1" src="http://andorstrail.irkalla.cz/0.7.0/map/waytomountaincave1_area.jpg" width="30" height="38">
+        </a>
+        <a id="waytomountaincave0" class="area" style="left: 1232px; top: 510px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytomountaincave0.html">
+            <img alt="waytomountaincave0" src="http://andorstrail.irkalla.cz/0.7.0/map/waytomountaincave0_area.jpg" width="30" height="58">
+        </a>
+        <a id="waytomountaincave2" class="area" style="left: 1222px; top: 610px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytomountaincave2.html">
+            <img alt="waytomountaincave2" src="http://andorstrail.irkalla.cz/0.7.0/map/waytomountaincave2_area.jpg" width="60" height="40">
+        </a>
+        <a id="wild11_clearing" class="area" style="left: 460px; top: 910px" href="http://andorstrail.irkalla.cz/0.7.0/map/wild11_clearing.html">
+            <img alt="wild11_clearing" src="http://andorstrail.irkalla.cz/0.7.0/map/wild11_clearing_area.jpg" width="30" height="30">
+        </a>
+        <a id="fallhaven_sw" class="area" style="left: 398px; top: 826px" href="http://andorstrail.irkalla.cz/0.7.0/map/fallhaven_sw.html">
+            <img alt="fallhaven_sw" src="http://andorstrail.irkalla.cz/0.7.0/map/fallhaven_sw_area.jpg" width="60" height="40">
+        </a>
+        <a id="waterwayextention" class="area" style="left: 662px; top: 362px" href="http://andorstrail.irkalla.cz/0.7.0/map/waterwayextention.html">
+            <img alt="waterwayextention" src="http://andorstrail.irkalla.cz/0.7.0/map/waterwayextention_area.jpg" width="28" height="28">
+        </a>
+        <a id="mountainlake3" class="area" style="left: 1490px; top: 256px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake3.html">
+            <img alt="mountainlake3" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake3_area.jpg" width="50" height="56">
+        </a>
+        <a id="waytominingtown0" class="area" style="left: 606px; top: 808px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytominingtown0.html">
+            <img alt="waytominingtown0" src="http://andorstrail.irkalla.cz/0.7.0/map/waytominingtown0_area.jpg" width="58" height="30">
+        </a>
+        <a id="mountainlake2" class="area" style="left: 1448px; top: 282px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake2.html">
+            <img alt="mountainlake2" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake2_area.jpg" width="40" height="34">
+        </a>
+        <a id="waytominingtown1" class="area" style="left: 666px; top: 778px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytominingtown1.html">
+            <img alt="waytominingtown1" src="http://andorstrail.irkalla.cz/0.7.0/map/waytominingtown1_area.jpg" width="60" height="60">
+        </a>
+        <a id="mountainlake1" class="area" style="left: 1386px; top: 256px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake1.html">
+            <img alt="mountainlake1" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake1_area.jpg" width="60" height="60">
+        </a>
+        <a id="waytominingtown2" class="area" style="left: 728px; top: 772px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytominingtown2.html">
+            <img alt="waytominingtown2" src="http://andorstrail.irkalla.cz/0.7.0/map/waytominingtown2_area.jpg" width="38" height="40">
+        </a>
+        <a id="mountainlake0" class="area" style="left: 1382px; top: 318px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake0.html">
+            <img alt="mountainlake0" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake0_area.jpg" width="40" height="60">
+        </a>
+        <a id="waytominingtown3" class="area" style="left: 768px; top: 756px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytominingtown3.html">
+            <img alt="waytominingtown3" src="http://andorstrail.irkalla.cz/0.7.0/map/waytominingtown3_area.jpg" width="60" height="60">
+        </a>
+        <a id="mountainlake7" class="area" style="left: 1578px; top: 106px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake7.html">
+            <img alt="mountainlake7" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake7_area.jpg" width="32" height="40">
+        </a>
+        <a id="mountainlake6" class="area" style="left: 1568px; top: 148px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake6.html">
+            <img alt="mountainlake6" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake6_area.jpg" width="38" height="58">
+        </a>
+        <a id="mountainlake5" class="area" style="left: 1552px; top: 208px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake5.html">
+            <img alt="mountainlake5" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake5_area.jpg" width="58" height="40">
+        </a>
+        <a id="mountainlake4" class="area" style="left: 1500px; top: 222px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake4.html">
+            <img alt="mountainlake4" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake4_area.jpg" width="50" height="32">
+        </a>
+        <a id="mountainlake9" class="area" style="left: 1504px; top: 0px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake9.html">
+            <img alt="mountainlake9" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake9_area.jpg" width="60" height="60">
+        </a>
+        <a id="vilegard_sw" class="area" style="left: 676px; top: 1010px" href="http://andorstrail.irkalla.cz/0.7.0/map/vilegard_sw.html">
+            <img alt="vilegard_sw" src="http://andorstrail.irkalla.cz/0.7.0/map/vilegard_sw_area.jpg" width="20" height="20">
+        </a>
+        <a id="mountainlake8" class="area" style="left: 1536px; top: 62px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake8.html">
+            <img alt="mountainlake8" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake8_area.jpg" width="40" height="60">
+        </a>
+        <a id="gapfiller1" class="area" style="left: 496px; top: 868px" href="http://andorstrail.irkalla.cz/0.7.0/map/gapfiller1.html">
+            <img alt="gapfiller1" src="http://andorstrail.irkalla.cz/0.7.0/map/gapfiller1_area.jpg" width="24" height="24">
+        </a>
+        <a id="gapfiller2" class="area" style="left: 350px; top: 814px" href="http://andorstrail.irkalla.cz/0.7.0/map/gapfiller2.html">
+            <img alt="gapfiller2" src="http://andorstrail.irkalla.cz/0.7.0/map/gapfiller2_area.jpg" width="46" height="52">
+        </a>
+        <a id="lostmine0" class="area" style="left: 830px; top: 722px" href="http://andorstrail.irkalla.cz/0.7.0/map/lostmine0.html">
+            <img alt="lostmine0" src="http://andorstrail.irkalla.cz/0.7.0/map/lostmine0_area.jpg" width="40" height="40">
+        </a>
+        <a id="fallhaven_se" class="area" style="left: 460px; top: 826px" href="http://andorstrail.irkalla.cz/0.7.0/map/fallhaven_se.html">
+            <img alt="fallhaven_se" src="http://andorstrail.irkalla.cz/0.7.0/map/fallhaven_se_area.jpg" width="60" height="40">
+        </a>
+        <a id="gapfiller3" class="area" style="left: 336px; top: 750px" href="http://andorstrail.irkalla.cz/0.7.0/map/gapfiller3.html">
+            <img alt="gapfiller3" src="http://andorstrail.irkalla.cz/0.7.0/map/gapfiller3_area.jpg" width="28" height="20">
+        </a>
+        <a id="gapfiller4" class="area" style="left: 366px; top: 764px" href="http://andorstrail.irkalla.cz/0.7.0/map/gapfiller4.html">
+            <img alt="gapfiller4" src="http://andorstrail.irkalla.cz/0.7.0/map/gapfiller4_area.jpg" width="30" height="48">
+        </a>
+        <a id="fields10" class="area" style="left: 170px; top: 568px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields10.html">
+            <img alt="fields10" src="http://andorstrail.irkalla.cz/0.7.0/map/fields10_area.jpg" width="40" height="30">
+        </a>
+        <a id="waytolake0" class="area" style="left: 1276px; top: 532px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytolake0.html">
+            <img alt="waytolake0" src="http://andorstrail.irkalla.cz/0.7.0/map/waytolake0_area.jpg" width="40" height="60">
+        </a>
+        <a id="fields11" class="area" style="left: 454px; top: 436px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields11.html">
+            <img alt="fields11" src="http://andorstrail.irkalla.cz/0.7.0/map/fields11_area.jpg" width="40" height="40">
+        </a>
+        <a id="fields12" class="area" style="left: 496px; top: 428px" href="http://andorstrail.irkalla.cz/0.7.0/map/fields12.html">
+            <img alt="fields12" src="http://andorstrail.irkalla.cz/0.7.0/map/fields12_area.jpg" width="38" height="40">
+        </a>
+        <a id="vilegard_n" class="area" style="left: 698px; top: 942px" href="http://andorstrail.irkalla.cz/0.7.0/map/vilegard_n.html">
+            <img alt="vilegard_n" src="http://andorstrail.irkalla.cz/0.7.0/map/vilegard_n_area.jpg" width="42" height="40">
+        </a>
+        <a id="roadbeforecrossroads1" class="area" style="left: 442px; top: 644px" href="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads1.html">
+            <img alt="roadbeforecrossroads1" src="http://andorstrail.irkalla.cz/0.7.0/map/roadbeforecrossroads1_area.jpg" width="58" height="50">
+        </a>
+        <a id="waytolostmine0" class="area" style="left: 768px; top: 694px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytolostmine0.html">
+            <img alt="waytolostmine0" src="http://andorstrail.irkalla.cz/0.7.0/map/waytolostmine0_area.jpg" width="60" height="60">
+        </a>
+        <a id="waytolake3" class="area" style="left: 1322px; top: 416px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytolake3.html">
+            <img alt="waytolake3" src="http://andorstrail.irkalla.cz/0.7.0/map/waytolake3_area.jpg" width="40" height="40">
+        </a>
+        <a id="vilegard_s" class="area" style="left: 698px; top: 984px" href="http://andorstrail.irkalla.cz/0.7.0/map/vilegard_s.html">
+            <img alt="vilegard_s" src="http://andorstrail.irkalla.cz/0.7.0/map/vilegard_s_area.jpg" width="42" height="40">
+        </a>
+        <a id="waytolake1" class="area" style="left: 1318px; top: 510px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytolake1.html">
+            <img alt="waytolake1" src="http://andorstrail.irkalla.cz/0.7.0/map/waytolake1_area.jpg" width="40" height="40">
+        </a>
+        <a id="waytolake2" class="area" style="left: 1318px; top: 458px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytolake2.html">
+            <img alt="waytolake2" src="http://andorstrail.irkalla.cz/0.7.0/map/waytolake2_area.jpg" width="40" height="50">
+        </a>
+        <a id="waytolostmine2" class="area" style="left: 830px; top: 602px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytolostmine2.html">
+            <img alt="waytolostmine2" src="http://andorstrail.irkalla.cz/0.7.0/map/waytolostmine2_area.jpg" width="58" height="56">
+        </a>
+        <a id="waytolostmine1" class="area" style="left: 768px; top: 638px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytolostmine1.html">
+            <img alt="waytolostmine1" src="http://andorstrail.irkalla.cz/0.7.0/map/waytolostmine1_area.jpg" width="60" height="54">
+        </a>
+        <a id="waytolostmine3" class="area" style="left: 830px; top: 660px" href="http://andorstrail.irkalla.cz/0.7.0/map/waytolostmine3.html">
+            <img alt="waytolostmine3" src="http://andorstrail.irkalla.cz/0.7.0/map/waytolostmine3_area.jpg" width="58" height="60">
+        </a>
+        <a id="mountainlake13" class="area" style="left: 1258px; top: 40px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake13.html">
+            <img alt="mountainlake13" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake13_area.jpg" width="60" height="58">
+        </a>
+        <a id="mountainlake12" class="area" style="left: 1320px; top: 16px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake12.html">
+            <img alt="mountainlake12" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake12_area.jpg" width="58" height="42">
+        </a>
+        <a id="mountainlake11" class="area" style="left: 1380px; top: 8px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake11.html">
+            <img alt="mountainlake11" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake11_area.jpg" width="60" height="50">
+        </a>
+        <a id="mountainlake10" class="area" style="left: 1442px; top: 0px" href="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake10.html">
+            <img alt="mountainlake10" src="http://andorstrail.irkalla.cz/0.7.0/map/mountainlake10_area.jpg" width="60" height="60">
+        </a>
+        <a id="loneford2" class="area" style="left: 454px; top: 502px" href="http://andorstrail.irkalla.cz/0.7.0/map/loneford2.html">
+            <img alt="loneford2" src="http://andorstrail.irkalla.cz/0.7.0/map/loneford2_area.jpg" width="60" height="52">
+        </a>
+        <a id="loneford1" class="area" style="left: 398px; top: 556px" href="http://andorstrail.irkalla.cz/0.7.0/map/loneford1.html">
+            <img alt="loneford1" src="http://andorstrail.irkalla.cz/0.7.0/map/loneford1_area.jpg" width="62" height="60">
+        </a>
+        <a id="crossglen" class="area" style="left: 274px; top: 710px" href="http://andorstrail.irkalla.cz/0.7.0/map/crossglen.html">
+            <img alt="crossglen" src="http://andorstrail.irkalla.cz/0.7.0/map/crossglen_area.jpg" width="60" height="60">
+        </a>
+        <a id="remgard1" class="area" style="left: 1324px; top: 166px" href="http://andorstrail.irkalla.cz/0.7.0/map/remgard1.html">
+            <img alt="remgard1" src="http://andorstrail.irkalla.cz/0.7.0/map/remgard1_area.jpg" width="60" height="60">
+        </a>
+        <a id="remgard0" class="area" style="left: 1262px; top: 152px" href="http://andorstrail.irkalla.cz/0.7.0/map/remgard0.html">
+            <img alt="remgard0" src="http://andorstrail.irkalla.cz/0.7.0/map/remgard0_area.jpg" width="60" height="60">
+        </a>
+        <a id="remgard3" class="area" style="left: 1282px; top: 214px" href="http://andorstrail.irkalla.cz/0.7.0/map/remgard3.html">
+            <img alt="remgard3" src="http://andorstrail.irkalla.cz/0.7.0/map/remgard3_area.jpg" width="40" height="54">
+        </a>
+        <a id="remgard2" class="area" style="left: 1324px; top: 228px" href="http://andorstrail.irkalla.cz/0.7.0/map/remgard2.html">
+            <img alt="remgard2" src="http://andorstrail.irkalla.cz/0.7.0/map/remgard2_area.jpg" width="60" height="40">
+        </a>
+        <a id="remgard4" class="area" style="left: 1220px; top: 214px" href="http://andorstrail.irkalla.cz/0.7.0/map/remgard4.html">
+            <img alt="remgard4" src="http://andorstrail.irkalla.cz/0.7.0/map/remgard4_area.jpg" width="60" height="60">
+        </a>
+        <a id="road1" class="area" style="left: 690px; top: 890px" href="http://andorstrail.irkalla.cz/0.7.0/map/road1.html">
+            <img alt="road1" src="http://andorstrail.irkalla.cz/0.7.0/map/road1_area.jpg" width="50" height="50">
+        </a>
+        <a id="road3" class="area" style="left: 784px; top: 918px" href="http://andorstrail.irkalla.cz/0.7.0/map/road3.html">
+            <img alt="road3" src="http://andorstrail.irkalla.cz/0.7.0/map/road3_area.jpg" width="50" height="30">
+        </a>
+        <a id="crossroads" class="area" style="left: 336px; top: 600px" href="http://andorstrail.irkalla.cz/0.7.0/map/crossroads.html">
+            <img alt="crossroads" src="http://andorstrail.irkalla.cz/0.7.0/map/crossroads_area.jpg" width="60" height="60">
+        </a>
+        <a id="road2" class="area" style="left: 742px; top: 910px" href="http://andorstrail.irkalla.cz/0.7.0/map/road2.html">
+            <img alt="road2" src="http://andorstrail.irkalla.cz/0.7.0/map/road2_area.jpg" width="40" height="38">
+        </a>
+        <a id="road5" class="area" style="left: 888px; top: 924px" href="http://andorstrail.irkalla.cz/0.7.0/map/road5.html">
+            <img alt="road5" src="http://andorstrail.irkalla.cz/0.7.0/map/road5_area.jpg" width="40" height="30">
+        </a>
+        <a id="road4" class="area" style="left: 836px; top: 908px" href="http://andorstrail.irkalla.cz/0.7.0/map/road4.html">
+            <img alt="road4" src="http://andorstrail.irkalla.cz/0.7.0/map/road4_area.jpg" width="50" height="40">
+        </a>
+    </div>
+
+
+</body>
+</html>

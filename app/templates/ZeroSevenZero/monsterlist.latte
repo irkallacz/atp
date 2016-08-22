@@ -1,0 +1,123 @@
+{define #Experience}
+  {var $averageDamage = ($item->attackDamageMax + $item->attackDamageMin) / 2}
+  {var $avgAttackHP = floor($item->maxAP / $item->attackCost) * ($item->attackChance/100) * $averageDamage * (1 + ($item->criticalSkill/100) * $item->criticalMultiplier) }
+  {var $avgDefenseHP = $item->maxHP * (1 + ($item->blockChance/100)) + 9 * $item->damageResistance}
+  {var $attackConditionBonus = $item->related('monster_condition')->count('condition') ? 50 :0}
+  {ceil(($avgAttackHP * 3 + $avgDefenseHP) * 0.7) + $attackConditionBonus}
+{/define}
+
+{block #head}
+  <script type="text/javascript">
+    $(document).ready(function(){
+        var setting = { 
+          "bPaginate": false,
+          "bFilter": false,
+          "bInfo": false,
+          "aoColumnDefs": [
+         {block |strip}
+         {foreach $colums as $colum => $field} 
+          {if $field =='BC%' or $field =='AC%'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatP(data,type) } } ,{/if}
+          {if $field =='HP'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatHP(data,type) } } ,{/if}
+          {if $field =='XP'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatXP(data,type) } } ,{/if}
+          {if $field =='Attack cost' or $field =='Move cost'  or $field =='AP'} { "aTargets": [{$iterator->counter-1}], "mRender": function (data,type) { return formatAP(data,type) } } ,{/if}
+         {/foreach}
+         {/block}
+          ]
+        } 
+
+      {foreach $tables as $label}    
+        $('#{!$label}s td.drop').live('click', function () {        
+          var tr = this.parentNode;
+          if (oTable{!$label}.fnIsOpen(tr)) closeTable(oTable{!$label},tr); else openTable(oTable{!$label},tr);
+        } );
+        oTable{!$label} = $('#{!$label}s').dataTable(setting);
+      {/foreach}      
+    
+    openHash();
+    });
+
+  function openTable(table,tr) {
+    $('#'+tr.id).toggleClass('border');
+    table.fnOpen(tr,'<table>'+unescape(tr.getAttribute('data-drop'))+'</p>','details');
+  }  
+  </script>
+{/block}
+
+{block #content}
+     <h1 n:block="title"><a n:href="default"><img alt="" src="{$baseUri}/image/icon.png"></a>Andor's Trail Monster List</h1>
+     <ul id="toc">
+      {foreach $tables as $label}    
+      <li><a href="#{$label}s">{$label|firstUpper}</a></li>
+      {/foreach}    
+     </ul>
+     
+     {foreach $tables as $label}
+     <h2>{$label|firstUpper}</h2>
+     <p n:if="in_array($label,['construct','ghost','demon'])">Immune to critical hits</p>
+     <table class="monster" id="{$label}s" width="80%">
+      <thead>
+      <tr>{block|strip}
+        <th n:foreach="$colums as $field">{$field}</th> 
+      {/block}</tr>
+      </thead>
+      <tbody>
+      {var $items = clone $monsters}
+      {foreach $items->where('monsterClass',$label) as $item}
+      {capture $var}
+          {if $item->droplistID}
+            <tr n:foreach="$item->ref('droplist')->related('droplist_item') as $dropItem">
+                <td>
+                    {if $dropItem->ref('item')->displaytype == quest}
+                        <a n:href="questlist#{$dropItem->itemID}" class="at-icon quest">{$dropItem->ref('item')->iconID|ATIcon}</a>
+                    {elseif $dropItem->ref('item')->ref('category')->actionType == use}
+                        <a n:href="consumablelist#{$dropItem->itemID}" class="at-icon">{$dropItem->ref('item')->iconID|ATIcon}</a>
+                    {elseif $dropItem->ref('item')->ref('category')->actionType == equip}
+                        <a n:href="itemlist#{$dropItem->itemID}" n:class="at-icon, $dropItem->ref('item')->displaytype ? $dropItem->ref('item')->displaytype">{$dropItem->ref('item')->iconID|ATIcon}</a>
+                    {else}
+                        <div class="at-icon">{$dropItem->ref('item')->iconID|ATIcon}</div>
+                    {/if}
+                </td>
+                <td class="left">{$dropItem->ref('item')->name}</td>
+                <td>{$dropItem->quantityMin}{if $dropItem->quantityMin!=$dropItem->quantityMax}-{$dropItem->quantityMax}{/if}</td>
+                <td>{$dropItem->chance}%</td>
+            </tr>
+          {/if}
+            <tr n:foreach="$item->related('quest_monster') as $questMonster"><td><a n:href="questlist#$questMonster->quest" class="at-icon">{$quest_icon|ATIcon}</td>
+             <td colspan="3" class="left">{$questMonster->ref('quest')->name}</td>
+            </tr>
+          </table>
+          <p class="left location" n:if="$item->spawnGroup">
+            {$map_icon|ATIcon}
+            {foreach $item->ref('spawn')->related('map_spawn')->fetchPairs('map') as $mapSpawn}
+                <a target="_blank" n:href="map#{$item->id} $mapSpawn->map">{$mapSpawn->ref('map')->name}</a>
+            {/foreach}
+          </p>
+      {/capture}
+      <tr id="{$item->id}" data-drop="{!$var|strip|pure}">
+        {foreach $colums as $colum => $field}                            
+          <td n:if="$colum == icon" class="icon">
+              <span class="hidden">{$item->spawnGroup}</span>
+              <a href="#{$item->id}" {if $item->unique}title="unique"{/if} n:class="at-icon,$item->unique ? unique, $item->size">
+                  {$item->iconID|ATIcon}
+              </a>
+          </td>
+          <td n:if="$colum == name" n:class="left, name, $var ? drop">
+              {$item->name}
+          </td>
+          <td n:if="$colum == damage">
+              {$item->attackDamageMin}{if $item->attackDamageMin!=$item->attackDamageMax}-{$item->attackDamageMax}{/if}
+          </td>
+          <td n:if="$colum == xp">{include #Experience}</td>
+          <td n:if="$colum == 'cond'" class="cond">
+          {foreach $item->related('monster_condition') as $monsterCond} {include #Conditions, cond => $monsterCond}{/foreach}
+          {if $item->hitEffect}{include #Effect, effect => $item->hitEffect, label => 'hit'}{/if}
+          </td>
+          {continueIf in_array($colum,array('icon','name','monsterClass','damage','info','cond','drop','xp'))}
+          <td>{if $item[$colum]}{$item[$colum]}{/if}</td>
+        {/foreach}
+      </tr>
+      {/foreach}
+    </tbody>
+    </table>
+    {/foreach}
+{/block}

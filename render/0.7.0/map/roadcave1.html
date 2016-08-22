@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Andor's Trail Interactive map [0.7.0] | roadcave1</title>
+    <link rel="shortcut icon" href="http://andorstrail.irkalla.cz/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="http://andorstrail.irkalla.cz/css/map.css">
+    <script src="http://andorstrail.irkalla.cz/js/map.js" type="text/javascript"></script>
+    <script>
+        (function(G,o,O,g,l){G.GoogleAnalyticsObject=O;G[O]||(G[O]=function(){(G[O].q=G[O].q||[]).push(arguments)});G[O].l=+new Date;g=o.createElement('script'),l=o.scripts[0];g.src='//www.google-analytics.com/analytics.js';l.parentNode.insertBefore(g,l)}(this,document,'ga'));ga('create','UA-56930109-1');ga('send','pageview')
+    </script>
+</head>
+<body onload="openHash()">
+    <ul class="menu" id="top" style="min-width: 800px">
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/">HOME</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/itemlist.php">EQUIPMENT</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/consumablelist.php">CONSUMABLE</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php">MONSTER</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/npclist.php">NPC &amp; MERCHANT</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/conditionlist.php">CONDITION</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/questlist.php">QUEST</a>
+        </li>
+        <li>
+                    <a class="current" href="http://andorstrail.irkalla.cz/0.7.0/map/">MAP</a>
+                    <ul class="menu">
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/blackwater.html">Blackwater
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwcave1.html">Blackwater cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwcave2.html">Blackwater cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwentry.html">Blackwater entry
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwsettlement.html">Blackwater settlement
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/flagstone.html">Flagstone
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/gargoylecave.html">Gargoyle cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/lodar5cave.html">Green maze cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/lodarcave.html">Lodar cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave.html">Mountain cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/pwcave.html">Pw cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/snakecave.html">Snake cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhavencave.html">Cave on way to Brimhaven
+</a></li>
+                    </ul>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/disqus.php">DISQUS</a>
+        </li>
+    </ul>
+    <div id="map" style="width: 800px">
+        <img id="image" alt="roadcave1.tmx" src="http://andorstrail.irkalla.cz/0.7.0/map/roadcave1.jpg" width="800" height="800">
+
+        <div style="left: 672px; top: 192px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -64px">
+        </div>
+        <div style="left: 704px; top: 320px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 672px; top: 320px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 672px; top: 672px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 512px; top: 704px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -128px">
+        </div>
+        <div style="left: 480px; top: 544px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 480px; top: 448px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 480px; top: 384px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 256px; top: 576px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -0px">
+        </div>
+        <div style="left: 256px; top: 480px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -0px">
+        </div>
+        <div style="left: 384px; top: 128px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 416px; top: 128px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 288px; top: 288px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 224px; top: 704px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -0px">
+        </div>
+        <div style="left: 160px; top: 736px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -32px">
+        </div>
+        <div style="left: 96px; top: 608px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -0px">
+        </div>
+        <div style="left: 96px; top: 672px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -0px">
+        </div>
+        <div style="left: 96px; top: 448px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -0px">
+        </div>
+        <div style="left: 64px; top: 320px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -0px">
+        </div>
+        <div style="left: 64px; top: 256px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_tometik2.png" alt="monsters_tometik2.png" style="margin: -0px 0px 0px -0px">
+        </div>
+
+        <img id="above" alt="roadcave1 above" src="http://andorstrail.irkalla.cz/0.7.0/map/roadcave1_above.png" width="800" height="800">
+
+        <a id="jelly6" title="Emerald Ooze" style="left: 672px; top: 192px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly6" class="npc jelly6 size1x1"></a>
+        <a id="jelly52" title="Crimson Jelly" style="left: 704px; top: 320px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly5" class="npc jelly5 size1x1"></a>
+        <a id="jelly53" title="Crimson Jelly" style="left: 672px; top: 320px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly5" class="npc jelly5 size1x1"></a>
+        <a id="jelly54" title="Crimson Jelly" style="left: 672px; top: 672px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly5" class="npc jelly5 size1x1"></a>
+        <a id="jelly25" title="Emerald Jelly" style="left: 512px; top: 704px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly2" class="npc jelly2 size1x1"></a>
+        <a id="jelly56" title="Crimson Jelly" style="left: 480px; top: 544px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly5" class="npc jelly5 size1x1"></a>
+        <a id="jelly57" title="Crimson Jelly" style="left: 480px; top: 448px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly5" class="npc jelly5 size1x1"></a>
+        <a id="jelly58" title="Crimson Jelly" style="left: 480px; top: 384px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly5" class="npc jelly5 size1x1"></a>
+        <a id="jelly49" title="Ochre Jelly" style="left: 256px; top: 576px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly4" class="npc jelly4 size1x1"></a>
+        <a id="jelly310" title="Poisonous Ooze" style="left: 256px; top: 480px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly3" class="npc jelly3 size1x1"></a>
+        <a id="jelly511" title="Crimson Jelly" style="left: 384px; top: 128px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly5" class="npc jelly5 size1x1"></a>
+        <a id="jelly512" title="Crimson Jelly" style="left: 416px; top: 128px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly5" class="npc jelly5 size1x1"></a>
+        <a id="jelly513" title="Crimson Jelly" style="left: 288px; top: 288px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly5" class="npc jelly5 size1x1"></a>
+        <a id="jelly414" title="Ochre Jelly" style="left: 224px; top: 704px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly4" class="npc jelly4 size1x1"></a>
+        <a id="jelly515" title="Crimson Jelly" style="left: 160px; top: 736px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly5" class="npc jelly5 size1x1"></a>
+        <a id="jelly416" title="Ochre Jelly" style="left: 96px; top: 608px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly4" class="npc jelly4 size1x1"></a>
+        <a id="jelly417" title="Ochre Jelly" style="left: 96px; top: 672px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly4" class="npc jelly4 size1x1"></a>
+        <a id="jelly318" title="Poisonous Ooze" style="left: 96px; top: 448px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly3" class="npc jelly3 size1x1"></a>
+        <a id="jelly419" title="Ochre Jelly" style="left: 64px; top: 320px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly4" class="npc jelly4 size1x1"></a>
+        <a id="jelly320" title="Poisonous Ooze" style="left: 64px; top: 256px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#jelly3" class="npc jelly3 size1x1"></a>
+
+        <!--Links-->
+            <a href="roadcave0.html#down north" id="up north" class="entrance" style="width:32px;height:32px;left:64px;top:96px"></a>
+
+        <table class="menu" id="bottom">
+            <tr>
+                <td>
+                                            &#9632; <a href="http://andorstrail.irkalla.cz/0.7.0/map/roadcave1.html">Road cave
+</a>
+
+                </td>
+                <td id="worldmaplink"> &#9650;
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/map/world1.html">Go to Worldmap</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

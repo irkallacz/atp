@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Andor's Trail Interactive map [0.7.0] | blackwater_mountain33</title>
+    <link rel="shortcut icon" href="http://andorstrail.irkalla.cz/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="http://andorstrail.irkalla.cz/css/map.css">
+    <script src="http://andorstrail.irkalla.cz/js/map.js" type="text/javascript"></script>
+    <script>
+        (function(G,o,O,g,l){G.GoogleAnalyticsObject=O;G[O]||(G[O]=function(){(G[O].q=G[O].q||[]).push(arguments)});G[O].l=+new Date;g=o.createElement('script'),l=o.scripts[0];g.src='//www.google-analytics.com/analytics.js';l.parentNode.insertBefore(g,l)}(this,document,'ga'));ga('create','UA-56930109-1');ga('send','pageview')
+    </script>
+</head>
+<body onload="openHash()">
+    <ul class="menu" id="top" style="min-width: 640px">
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/">HOME</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/itemlist.php">EQUIPMENT</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/consumablelist.php">CONSUMABLE</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php">MONSTER</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/npclist.php">NPC &amp; MERCHANT</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/conditionlist.php">CONDITION</a>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/questlist.php">QUEST</a>
+        </li>
+        <li>
+                    <a class="current" href="http://andorstrail.irkalla.cz/0.7.0/map/">MAP</a>
+                    <ul class="menu">
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/blackwater.html">Blackwater
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwcave1.html">Blackwater cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwcave2.html">Blackwater cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwentry.html">Blackwater entry
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/bwsettlement.html">Blackwater settlement
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/flagstone.html">Flagstone
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/gargoylecave.html">Gargoyle cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/lodar5cave.html">Green maze cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/lodarcave.html">Lodar cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/mountaincave.html">Mountain cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/pwcave.html">Pw cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/snakecave.html">Snake cave
+</a></li>
+                        <li><a href="http://andorstrail.irkalla.cz/0.7.0/map/waytobrimhavencave.html">Cave on way to Brimhaven
+</a></li>
+                    </ul>
+        </li>
+        <li>
+                    <a href="http://andorstrail.irkalla.cz/disqus.php">DISQUS</a>
+        </li>
+    </ul>
+    <div id="map" style="width: 640px">
+        <img id="image" alt="blackwater_mountain33.tmx" src="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain33.jpg" width="640" height="640">
+
+        <div style="left: 160px; top: 288px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_rltiles1.png" alt="monsters_rltiles1.png" style="margin: -64px 0px 0px -288px">
+        </div>
+        <div style="left: 128px; top: 192px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_rltiles1.png" alt="monsters_rltiles1.png" style="margin: -64px 0px 0px -224px">
+        </div>
+        <div style="left: 256px; top: 160px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_rltiles1.png" alt="monsters_rltiles1.png" style="margin: -64px 0px 0px -288px">
+        </div>
+        <div style="left: 224px; top: 512px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_rltiles1.png" alt="monsters_rltiles1.png" style="margin: -32px 0px 0px -224px">
+        </div>
+        <div style="left: 384px; top: 480px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_rltiles1.png" alt="monsters_rltiles1.png" style="margin: -64px 0px 0px -288px">
+        </div>
+        <div style="left: 320px; top: 512px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_rltiles1.png" alt="monsters_rltiles1.png" style="margin: -64px 0px 0px -224px">
+        </div>
+        <div style="left: 512px; top: 192px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_rltiles1.png" alt="monsters_rltiles1.png" style="margin: -64px 0px 0px -224px">
+        </div>
+        <div style="left: 544px; top: 192px" class="npc size1x1">
+            <img src="http://andorstrail.irkalla.cz/drawable/0.7.0/monsters_rltiles1.png" alt="monsters_rltiles1.png" style="margin: -64px 0px 0px -224px">
+        </div>
+
+
+        <a id="grave_spawn1" title="Grave spawn" style="left: 160px; top: 288px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#grave_spawn" class="npc grave_spawn size1x1"></a>
+        <a id="restless_dead2" title="Restless dead" style="left: 128px; top: 192px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#restless_dead" class="npc restless_dead size1x1"></a>
+        <a id="grave_spawn3" title="Grave spawn" style="left: 256px; top: 160px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#grave_spawn" class="npc grave_spawn size1x1"></a>
+        <a id="skeletal_reaper4" title="Skeletal reaper" style="left: 224px; top: 512px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#skeletal_reaper" class="npc skeletal_reaper size1x1"></a>
+        <a id="grave_spawn5" title="Grave spawn" style="left: 384px; top: 480px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#grave_spawn" class="npc grave_spawn size1x1"></a>
+        <a id="restless_dead6" title="Restless dead" style="left: 320px; top: 512px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#restless_dead" class="npc restless_dead size1x1"></a>
+        <a id="restless_dead7" title="Restless dead" style="left: 512px; top: 192px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#restless_dead" class="npc restless_dead size1x1"></a>
+        <a id="restless_dead8" title="Restless dead" style="left: 544px; top: 192px" href="http://andorstrail.irkalla.cz/0.7.0/monsterlist.php#restless_dead" class="npc restless_dead size1x1"></a>
+
+        <!--Links-->
+            <a href="blackwater_mountain12.html#south" id="north" class="entrance" style="width:32px;height:32px;left:64px;top:96px"></a>
+            <a href="blackwater_mountain34.html#north" id="south" class="entrance" style="width:32px;height:32px;left:64px;top:544px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:64px;top:224px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:32px;top:288px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:96px;top:320px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:416px;top:128px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:160px;top:320px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:192px;top:256px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:480px;top:128px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:544px;top:160px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:544px;top:224px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:544px;top:448px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:576px;top:512px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:512px;top:544px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:448px;top:576px"></a>
+            <a class="sign" data-message="(The tombstone contains writing in a language that you do not understand)" href="javascript:sign('sign_bwm33_grave')" id="sign_bwm33_grave" style="width:32px;height:32px;left:384px;top:576px"></a>
+
+        <table class="menu" id="bottom">
+            <tr>
+                <td>
+                                            &#9632; <a href="http://andorstrail.irkalla.cz/0.7.0/map/blackwater_mountain33.html">Blackwater crypt
+</a>
+
+                </td>
+                <td id="worldmaplink"> &#9650;
+                    <a href="http://andorstrail.irkalla.cz/0.7.0/map/world1.html">Go to Worldmap</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

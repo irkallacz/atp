@@ -1,0 +1,42 @@
+body {background-color: black; color: silver; font-family: Arial, sans-serif;}
+a {color: silver; text-decoration: underline;} 
+a img {border: none;}
+h1, h2, h3 {color: white;}
+h1 img {vertical-align: middle}
+ul li {list-style-type: square;}
+table {text-align: center; border-collapse: collapse;}
+table.dataTable {margin: 1em 1em;}
+.quest, .extraordinary, .rare, .legendary, .unique {background-image: url('../image/ui_selections.png'); background-repeat: no-repeat;}
+.unique {background-position: 0px 0px;}
+.quest {background-position: -32px 0px;}
+.extraordinary {background-position: -64px 0px;}
+.rare {background-position: -96px 0px;}
+.legendary {background-position: -128px 0px;}
+.at-icon {float: left; width: 32px; height: 32px; overflow: hidden;}
+.size2x2 {width: 64px; height: 64px;}
+.unique.size2x2 {background-position: 32px 32px; }
+.hidden {display: none;}
+.left {text-align: left;}
+.category {width: 20%;}
+.cond {width: 10%;}
+.location {margin: 1ex}
+p.location img {vertical-align: middle;}
+p.location a {margin-left: 1ex;}
+.float-right {float: right}
+#version {padding-right: 1em}
+#version a {text-decoration: none;}
+#version a:hover {text-decoration: underline;}
+table.dataTable td.name {width: 20%; padding-left: 20px;}
+table.dataTable td.drop {cursor: pointer; background-image: url('../image/sort_desc.png'); background-repeat: no-repeat; 
+background-position: 0px 5px;}
+table.dataTable tr.drop.border td.name {background-image: url('../image/sort_asc.png'); background-position: 0px 15px;}
+tr.border, tr .details {background-color: rgb(32,32,32)}
+.info {font-family: Times, serif; font-weight: bold; color: yellow;}
+.help {cursor: help;}
+
+#menu {list-style-type: none; display: block; text-align: center; border-width: 3px 0px; border-style: solid; 
+border-color: rgb(32,32,32); padding: 1ex; width: 95%; margin: 1em auto;}
+#menu li {display: inline; margin: 0px 5px; font-weight: bold;}
+#menu li a {text-decoration: none; white-space: nowrap; }
+#menu li a.current {color: white;}
+#menu li a:hover {text-decoration: underline;}
