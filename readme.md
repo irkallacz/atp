@@ -10,7 +10,7 @@ This app generates pages directly from source files, witch are in easy-to-read J
 
 This app is writen in PHP and uses [Nette framework](https://nette.org/) and [Kdyby/Console](https://github.com/Kdyby/Console) addon. I use MySQL database as data storage.   
 
-My idea was use console scprits to import data from game source files to database. Scripts can be found in [app/commnads](/master/app/commands) directory. Then use framework to generate web pages and save that pages, so nothing is generated, unless there has been change. Generated pages can be found in [render](/master/render).
+My idea was use console scprits to import data from game source files to database. Scripts can be found in [app/commnads](/app/commands) directory. Then use framework to generate web pages and save that pages, so nothing is generated, unless there has been change. Generated pages can be found in [render](/render).
 
 ## Contact and links
 
