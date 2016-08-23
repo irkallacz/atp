@@ -1,35 +1,21 @@
-Nette Sandbox
-=============
+# About
 
-Sandbox is a pre-packaged and pre-configured Nette Framework application
-that you can use as the skeleton for your new applications.
+**Andor's Trail** is quest-driven Roguelike fantasy dungeon crawler RPG with a powerful story on Android, with open source code (GPL).
 
-[Nette](http://nette.org) is a popular tool for PHP web development.
-It is designed to be the most usable and friendliest as possible. It focuses
-on security and performance and is definitely one of the safest PHP frameworks.
+I created this web app because I couldnt find accurate list of equipment, witch will include item from new 0.7 version of game.
 
+This app generates pages directly from source files, witch are in easy-to-read JSON nad XML format. I parset files into my database, so it could be ordered and filtered. However the process is automatical a there are just few user input. But every data came from source files and nothing is added manually, exept of name of location, witch i need to rewrite, so it could be readable not only for computer.
 
-Installing
-----------
+## Technology
 
-The best way to install Sandbox is using Composer. If you don't have Composer yet, download
-it following [the instructions](http://doc.nette.org/composer). Then use command:
+This app is writen in PHP and uses [Nette framework](https://nette.org/) and [Kdyby/Console](https://github.com/Kdyby/Console) addon. I use MySQL database as data storage.   
 
-		composer create-project nette/sandbox my-app
-		cd my-app
+My idea was use console scprits to import data from game source files to database. Scripts can be found in [app/commnads](/tree/master/app/commands) directory. Then use framework to generate web pages and save that pages, so nothing is generated, unless there has been change. Generated pages can be found in [render](/tree/master/render).
 
-Make directories `temp` and `log` writable. Navigate your browser
-to the `www` directory and you will see a welcome page. PHP 5.4 allows
-you run `php -S localhost:8888 -t www` to start the web server and
-then visit `http://localhost:8888` in your browser.
+## Contact and links
 
-It is CRITICAL that whole `app`, `log` and `temp` directories are NOT accessible
-directly via a web browser! See [security warning](http://nette.org/security-warning).
+If you want more information about game, please visit the [official game page on Google Play](https://play.google.com/store/apps/details?id=com.gpl.rpg.
+AndorsTrail) or the [main game forum](http://www.andorstrail.com/). There is also a [Git Hub page](https://github.com/oskarwiksten/andors-trail) if you are interested in game source code.
 
+You can contact me by e-mail: [faila@atlas.cz](mailto:faila@atlas.cz).
 
-License
--------
-- Nette: New BSD License or GPL 2.0 or 3.0 (http://nette.org/license)
-- jQuery: MIT License (https://jquery.org/license)
-- Adminer: Apache License 2.0 or GPL 2 (http://www.adminer.org)
-- Sandbox: The Unlicense (http://unlicense.org)
