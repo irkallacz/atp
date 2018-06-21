@@ -2,7 +2,7 @@
 
 **Andor's Trail** is quest-driven Roguelike fantasy dungeon crawler RPG with a powerful story on Android, with open source code (GPL).
 
-I created this web app because I couldnt find accurate list of equipment, witch will include item from new 0.7 version of game.
+I created web app (can be found at http://andorstrail.irkalla.cz) because I couldnt find accurate list of equipment, witch will include item from new 0.7 version of game.
 
 This app generates pages directly from source files, witch are in easy-to-read JSON nad XML format. I parset files into my database, so it could be ordered and filtered. However the process is automatical a there are just few user input. But every data came from source files and nothing is added manually, exept of name of location, witch i need to rewrite, so it could be readable not only for computer.
 
@@ -14,8 +14,7 @@ My idea was use console scprits to import data from game source files to databas
 
 ## Contact and links
 
-If you want more information about game, please visit the [official game page on Google Play](https://play.google.com/store/apps/details?id=com.gpl.rpg.
-AndorsTrail) or the [main game forum](http://www.andorstrail.com/). There is also a [Git Hub page](https://github.com/oskarwiksten/andors-trail) if you are interested in game source code.
+If you want more information about game, please visit the [official game page on Google Play](https://play.google.com/store/apps/details?id=com.gpl.rpg.AndorsTrail) or the [main game forum](http://www.andorstrail.com/). There is also a [Git Hub page](https://github.com/oskarwiksten/andors-trail) if you are interested in game source code.
 
 You can contact me by e-mail: [faila@atlas.cz](mailto:faila@atlas.cz).
 
