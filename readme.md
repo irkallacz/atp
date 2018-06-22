@@ -1,4 +1,4 @@
-#Andor's Trail Directory
+# Andor's Trail Directory
 
 **Andor's Trail Directory** is web encyclopedia located at http://andorstrail.irkalla.cz, with goal to map and fully describe Android game **Andor's Trail**.
 
